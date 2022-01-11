@@ -15,3 +15,6 @@ export const useFetch = (url) => {
 }
 
 export const url = `https://mpstats.timmi6790.de`
+
+export const boardNames = ["Wins", "Losses", "Deaths", "GemsEarned"]
+export const statNames = ["Daily", "Weekly", "Monthly", "Yearly", "All"]

@@ -1,12 +1,14 @@
 import {useState, useEffect} from "react"
-import GameContainer from "./components/GameContainer/GameContainer";
+import Leaderboard from "./components/Leaderboard/Leaderboard";
+import Navbar from "./components/Navbar/Navbar";
 import { url, id } from "./context"
 
 function App() {
   return (
-    <main>
-      <GameContainer />
-    </main>
+    <>
+      <Navbar />
+      <Leaderboard />
+    </>
   );
 }
 

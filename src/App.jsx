@@ -1,14 +1,19 @@
 import {useState, useEffect} from "react"
-import Leaderboard from "./components/Leaderboard/Leaderboard";
+import Leaderboard from "./pages/Leaderboard";
+import PlayerStats from "./pages/PlayerStats"
 import Navbar from "./components/Navbar/Navbar";
 import { url, id } from "./context"
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <Navbar />
-      <Leaderboard />
-    </>
+      <Routes>
+        <Route path="/" element={<Leaderboard />} />
+        <Route path="/player" element={<PlayerStats />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

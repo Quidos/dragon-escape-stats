@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
-import { url, id, boardNames, statNames} from "../../context"
+import { url, id, boardNames, statNames} from "../context"
 
-import { useFetch } from "../../context"
-import LeaderboardTable from "../LeaderboardTable/LeaderboardTable"
+import { useFetch } from "../context"
+import LeaderboardTable from "../components/LeaderboardTable/LeaderboardTable"
 
 
 const Leaderboard = (props) => {

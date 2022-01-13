@@ -18,3 +18,7 @@ export const url = `https://mpstats.timmi6790.de`
 
 export const boardNames = ["Wins", "Losses", "Deaths", "GemsEarned"]
 export const statNames = ["Daily", "Weekly", "Monthly", "Yearly", "All"]
+export const playerStatNames = [
+    "Wins", "SecondPlace", "ThirdPlace", "Losses", "Deaths", "GemsEarned", "TraveledBlocks", "ExpEarned", 
+    "Paralympics"
+]

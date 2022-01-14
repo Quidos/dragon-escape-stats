@@ -1,0 +1,26 @@
+.navbar {
+    background-color: rgb(106, 238, 89);
+    padding: 20px;
+    padding-right: 0;
+}
+
+.icon {
+    margin-right: 5px;
+}
+.logo {
+    display: inline-block;
+}
+
+.link-container {
+    float: right;
+}
+
+.link-container * {
+    text-decoration: none;
+    color: black;
+    padding: 20px;
+}
+
+.link-container *:hover {
+    background-color: rgb(88, 194, 74);
+}

@@ -5,14 +5,20 @@ import Navbar from "./components/Navbar/Navbar";
 import { url, id } from "./context"
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 
+import "./index.css"
+import Sidebar from "./components/Sidebar/Sidebar";
+
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Leaderboard />} />
-        <Route path="/player" element={<PlayerStats />} />
-      </Routes>
+      <Sidebar />
+      <div className="main-container">
+        <Routes>
+          <Route path="/" element={<Leaderboard />} />
+          <Route path="/player" element={<PlayerStats />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

@@ -1,15 +1,15 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
+import "./navbar.css"
+
 
 const Navbar = (props) => {
     return (
-        <nav className="navbar">
-            <div>Dragon Escape Stats</div>
-            <div>CaptainClaw98</div>
-            <Link to="/">Home</Link>
-            <Link to="/player">Player Stats</Link>
-        </nav>
+        <div className="navbar">
+            <i class="icon fas fa-dragon"></i>
+            <div className="logo">Dragon Escape Stats</div>
+        </div>
     )
 }
 

@@ -45,7 +45,7 @@ const Leaderboard = (props) => {
                     )
                 })}
             </select>
-            <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} />
+            <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} queryChanger={props.queryChanger} />
         </div>
     )
 }

@@ -7,7 +7,7 @@ import "./navbar.css"
 const Navbar = (props) => {
     return (
         <div className="navbar">
-            <i class="icon fas fa-dragon"></i>
+            <i className="icon fas fa-dragon"></i>
             <div className="logo">Dragon Escape Stats</div>
         </div>
     )

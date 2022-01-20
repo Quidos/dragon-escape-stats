@@ -9,14 +9,19 @@ import "./index.css"
 import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
+  const [query, setQuery] = useState("");
+  const changeQuery = (playerName) => {
+    setQuery(playerName);
+  }
+  
   return (
     <BrowserRouter>
       <Navbar />
       <Sidebar />
       <div className="main-container">
         <Routes>
-          <Route path="/" element={<Leaderboard />} />
-          <Route path="/player" element={<PlayerStats />} />
+          <Route path="/" element={<Leaderboard queryChanger={changeQuery}/>} />
+          <Route path="/player" element={<PlayerStats query={query}/>} />
         </Routes>
       </div>
     </BrowserRouter>

@@ -5,7 +5,7 @@ import { url, statNames } from "../context"
 
 
 const PlayerStats = (props) => {
-    const [playerName, setPlayerName] = useState("")
+    const [playerName, setPlayerName] = useState(props.query)
     const [playerData, setPlayerData] = useState("")
     const [playerDataType, setPlayerDataType] = useState(0)
     const [statName, setStatName] = useState("All")
@@ -15,6 +15,7 @@ const PlayerStats = (props) => {
     }
 
     const getStats = () => {
+        console.log("in stats");
         if(playerName == "") return
         fetch(`${url}/v1/java/player/${playerName}/stats/game/DragonEscape/${statName}`)
         .then((res) => res.json())

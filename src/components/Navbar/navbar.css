@@ -1,5 +1,5 @@
 .navbar {
-    background-color: rgb(106, 238, 89);
+    background-color: var(--base-color);
     padding: 20px;
     padding-right: 0;
 }

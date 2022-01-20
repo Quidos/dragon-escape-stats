@@ -1,0 +1,35 @@
+.player-card {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player-avatar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-name {
+    font-weight: bold;
+}
+
+.player-image {
+    display: inline-block;
+    padding: 40px;
+    padding-bottom: 10px;
+}
+
+.player-card-table-main {
+    border-collapse: collapse;
+}
+
+.player-card-table-main thead tr{
+    text-align: left;
+}
+
+.player-card-table-main tbody tr td{
+    border: 1px solid black;
+    padding-left: 10px;
+    padding-right: 20px;
+}

@@ -32,3 +32,12 @@
     color: rgb(106, 238, 89);
     cursor: pointer;
 }
+
+.leaderboard-table a{
+    text-decoration: none;
+    color: rgb(60, 190, 43);
+}
+
+.leaderboard-table a:hover{
+    color: rgb(34, 122, 23);
+}

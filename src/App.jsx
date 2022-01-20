@@ -13,7 +13,7 @@ function App() {
   const changeQuery = (playerName) => {
     setQuery(playerName);
   }
-  
+
   return (
     <BrowserRouter>
       <Navbar />
@@ -21,7 +21,7 @@ function App() {
       <div className="main-container">
         <Routes>
           <Route path="/" element={<Leaderboard queryChanger={changeQuery}/>} />
-          <Route path="/player" element={<PlayerStats query={query}/>} />
+          <Route path="/player" element={<PlayerStats query={query} queryChanger={changeQuery} />} />
         </Routes>
       </div>
     </BrowserRouter>

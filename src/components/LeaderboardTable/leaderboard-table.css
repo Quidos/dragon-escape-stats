@@ -56,6 +56,7 @@
 .leaderboard-table a{
     text-decoration: none;
     color: rgb(60, 190, 43);
+    padding-left: 10px;
 }
 
 .leaderboard-table a:hover{

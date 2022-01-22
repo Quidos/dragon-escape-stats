@@ -49,12 +49,17 @@ const PlayerStats = (props) => {
     return (
         <div className="player-stats-container">
             <div className="search-controls">
+                <button className="search-button" onClick={getStats}>
+                    <i className="fas fa-search fa-lg"></i>
+                </button>
                 <input 
                     className="player-search" 
                     type="text" 
                     value={playerName} 
                     onChange={playerNameChange} 
                     onKeyDown={(e) => {if(e.keyCode == 13) getStats()}}
+                    placeholder="Search..."
+                    autoFocus
                 />
                 <Select 
                     className="select"
@@ -62,6 +67,7 @@ const PlayerStats = (props) => {
                     value={statName}
                     onChange={setStatName} 
                     options={statNamesArr}
+                    isSearchable={false}
                 />
             </div>
             {loading ? <Loading /> : 

@@ -13,7 +13,7 @@ const Leaderboard = (props) => {
     const [leaderboardData, setLeaderboardData] = useState(null)
     const [boardName, setBoardName] = useState(boardNamesArr[0])
     const [statName, setStatName] = useState(statNamesArr[1])
-    const [perPage, setPerPage] = useState(20)
+    const [perPage, setPerPage] = useState(25)
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -36,6 +36,7 @@ const Leaderboard = (props) => {
                     value={boardName}
                     onChange={setBoardName} 
                     options={boardNamesArr}
+                    isSearchable={false}
                 />
                 <Select 
                     className="select"
@@ -43,6 +44,7 @@ const Leaderboard = (props) => {
                     value={statName}
                     onChange={setStatName} 
                     options={statNamesArr}
+                    isSearchable={false}
                 />
             </div>
             {

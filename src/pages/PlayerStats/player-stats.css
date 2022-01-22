@@ -1,17 +1,25 @@
+.search-button {
+    width: 50px;
+    background: #23b623;
+    border: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-button:hover {
+    background: #188318;
+    cursor: pointer;
+}
+
 .player-search {
-    width: 250px;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    background-color: white;
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 10px 20px 10px 50px;
-    background-image: url('search.png');
-    background-size: 28px;
+    width: 200px;
+    border: 2px solid rgb(204, 204, 204);
+    border-radius: 0 4px 4px 0;
+    border-width: 2px 2px 2px 0;
+    padding: 10px;
     font: inherit
 }
 
 .player-search:focus {
     outline: none !important;
-    border:2px solid rgb(0, 183, 255);
+
 }

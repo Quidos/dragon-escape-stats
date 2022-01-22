@@ -1,6 +1,7 @@
 .player-card {
     display: flex;
     flex-wrap: wrap;
+    padding: 20px;
 }
 
 .player-avatar {
@@ -22,14 +23,29 @@
 
 .player-card-table-main {
     border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 5px 5px 0 0;
 }
 
 .player-card-table-main thead tr{
-    text-align: left;
+    text-align: center;
+    text-decoration: none;
+}
+
+.player-card-table-main thead tr th{
+    text-align: center;
+    border: 1px solid #dddddd;
+}
+
+.player-card-table-main tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.player-card-table-main tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
 }
 
 .player-card-table-main tbody tr td{
-    border: 1px solid black;
-    padding-left: 10px;
-    padding-right: 20px;
+    border: 1px solid #dddddd;
+    padding: 2px 40px 2px 20px;
 }

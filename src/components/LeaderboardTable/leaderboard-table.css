@@ -5,17 +5,37 @@
 }
 
 .leaderboard-table-main {
+    width: 100%;
     border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 5px 5px 0 0;
 }
 
 .leaderboard-table-main thead tr{
-    text-align: left;
+    text-align: center;
+    text-decoration: none;
+}
+
+.leaderboard-table-main thead tr th{
+    text-align: center;
+    border: 1px solid #dddddd;
+}
+
+.leaderboard-table-main tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.leaderboard-table-main tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.leaderboard-table-main tbody tr:last-of-type {
+    border-bottom: 2px solid #3cbb22;
 }
 
 .leaderboard-table-main tbody tr td{
-    border: 1px solid black;
-    padding-left: 10px;
-    padding-right: 20px;
+    border: 1px solid #dddddd;
+    padding: 2px 40px 2px 20px;
 }
 
 .table-controls {

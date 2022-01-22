@@ -1,15 +1,18 @@
 import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
-import Loading from "../components/Loading/Loading"
-import PlayerCard from "../components/PlayerCard/PlayerCard"
-import { url, statNames } from "../context"
+import Select from "react-select"
+import Loading from "../../components/Loading/Loading"
+import PlayerCard from "../../components/PlayerCard/PlayerCard"
+import { url, statNamesArr } from "../../context"
+
+import "./player-stats.css"
 
 
 const PlayerStats = (props) => {
     const [playerName, setPlayerName] = useState(props.query)
     const [playerData, setPlayerData] = useState("")
     const [playerDataType, setPlayerDataType] = useState(0)
-    const [statName, setStatName] = useState("All")
+    const [statName, setStatName] = useState(statNamesArr[4])
     const [loading, setLoading] = useState(false);
 
     const playerNameChange = (e) => {
@@ -19,7 +22,7 @@ const PlayerStats = (props) => {
     const getStats = () => {
         if(playerName == "") return
         setLoading(true)
-        fetch(`${url}/v1/java/player/${playerName}/stats/game/DragonEscape/${statName}`)
+        fetch(`${url}/v1/java/player/${playerName}/stats/game/DragonEscape/${statName.value}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);
@@ -45,14 +48,22 @@ const PlayerStats = (props) => {
 
     return (
         <div className="player-stats-container">
-            <input type="text" value={playerName} onChange={playerNameChange} onKeyDown={(e) => {if(e.keyCode == 13) getStats()}}/>
-            <select className="stat-names" value={statName} onChange={(e) => setStatName(e.target.value)} name="selStat" id="selStat">
-                {statNames.map(sName => {
-                    return (
-                        <option key={sName} value={sName}>{sName}</option>
-                    )
-                })}
-            </select>
+            <div className="search-controls">
+                <input 
+                    className="player-search" 
+                    type="text" 
+                    value={playerName} 
+                    onChange={playerNameChange} 
+                    onKeyDown={(e) => {if(e.keyCode == 13) getStats()}}
+                />
+                <Select 
+                    className="select"
+                    defaultValue={statName} 
+                    value={statName}
+                    onChange={setStatName} 
+                    options={statNamesArr}
+                />
+            </div>
             {loading ? <Loading /> : 
                 [
                     <></>,

@@ -1,0 +1,9 @@
+.search-controls {
+    display: flex;
+}
+
+.select {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 5px;
+}

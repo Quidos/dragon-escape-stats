@@ -1,0 +1,17 @@
+.player-search {
+    width: 250px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding: 10px 20px 10px 50px;
+    background-image: url('search.png');
+    background-size: 28px;
+    font: inherit
+}
+
+.player-search:focus {
+    outline: none !important;
+    border:2px solid rgb(0, 183, 255);
+}

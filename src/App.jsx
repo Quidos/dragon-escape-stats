@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react"
-import Leaderboard from "./pages/Leaderboard";
-import PlayerStats from "./pages/PlayerStats"
+import Leaderboard from "./pages/Leaderboard/Leaderboard";
+import PlayerStats from "./pages/PlayerStats/PlayerStats";
+import About from "./pages/About/About";
 import Navbar from "./components/Navbar/Navbar";
 import { url, id } from "./context"
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Leaderboard queryChanger={changeQuery}/>} />
           <Route path="/player" element={<PlayerStats query={query} queryChanger={changeQuery} />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </div>
     </BrowserRouter>

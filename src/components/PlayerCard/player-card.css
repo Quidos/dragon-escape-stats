@@ -49,3 +49,9 @@
     border: 1px solid #dddddd;
     padding: 2px 40px 2px 20px;
 }
+
+@media screen and (max-width: 1000px) {
+    .player-card {
+        flex-direction: column;
+    }
+}

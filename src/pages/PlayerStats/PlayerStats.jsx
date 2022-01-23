@@ -48,19 +48,22 @@ const PlayerStats = (props) => {
 
     return (
         <div className="player-stats-container">
-            <div className="search-controls">
-                <button className="search-button" onClick={getStats}>
-                    <i className="fas fa-search fa-lg"></i>
-                </button>
-                <input 
-                    className="player-search" 
-                    type="text" 
-                    value={playerName} 
-                    onChange={playerNameChange} 
-                    onKeyDown={(e) => {if(e.keyCode == 13) getStats()}}
-                    placeholder="Search..."
-                    autoFocus
-                />
+            <div className="player-search-controls">
+                <div className="player-search">
+                    <button className="search-button" onClick={getStats}>
+                        <i className="fas fa-search fa-lg"></i>
+                    </button>
+                    <input 
+                        className="player-input" 
+                        type="text" 
+                        value={playerName} 
+                        onChange={playerNameChange} 
+                        onKeyDown={(e) => {if(e.keyCode == 13) getStats()}}
+                        placeholder="Search..."
+                        autoFocus
+                    />
+                </div>
+
                 <Select 
                     className="select"
                     defaultValue={statName} 

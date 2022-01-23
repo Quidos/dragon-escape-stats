@@ -1,3 +1,18 @@
+.player-stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.player-search-controls {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.player-search {
+    display: flex;
+}
+
 .search-button {
     width: 50px;
     background: #23b623;
@@ -10,7 +25,7 @@
     cursor: pointer;
 }
 
-.player-search {
+.player-input {
     width: 200px;
     border: 2px solid rgb(204, 204, 204);
     border-radius: 0 4px 4px 0;
@@ -19,7 +34,7 @@
     font: inherit
 }
 
-.player-search:focus {
+.player-input:focus {
     outline: none !important;
 
 }

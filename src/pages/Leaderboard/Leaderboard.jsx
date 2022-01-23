@@ -37,6 +37,8 @@ const Leaderboard = (props) => {
                     onChange={setBoardName} 
                     options={boardNamesArr}
                     isSearchable={false}
+                    menuPortalTarget={document.body} 
+                    styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
                 />
                 <Select 
                     className="select"

@@ -9,16 +9,19 @@
     z-index: 9999;
 }
 
-.fa-home {
-    padding-right: 10px;
+.home-text {
+    display: inline-block;
+    padding-left: 10px;
 }
 
-.fa-chart-bar {
-    padding-right: 12px;
+.player-stats-text {
+    display: inline-block;
+    padding-left: 15px;
 }
 
-.fa-question-circle {
-    padding-right: 11px;
+.about-text {
+    display: inline-block;
+    padding-left: 12px;
 }
 
 .sidebar a {
@@ -46,5 +49,17 @@
         text-align: center;
         width: 100%;
         font-size: large;
+    }
+
+    .home-text {
+        display: none;
+    }
+
+    .player-stats-text {
+        display: none;
+    }
+    
+    .about-text {
+        display: none;
     }
 }

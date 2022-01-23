@@ -60,7 +60,6 @@ const PlayerStats = (props) => {
                         onChange={playerNameChange} 
                         onKeyDown={(e) => {if(e.keyCode == 13) getStats()}}
                         placeholder="Search..."
-                        autoFocus
                     />
                 </div>
 

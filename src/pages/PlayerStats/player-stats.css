@@ -38,3 +38,10 @@
     outline: none !important;
 
 }
+
+@media screen and (max-width: 1000px) {
+    .player-search-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+}

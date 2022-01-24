@@ -1,6 +1,5 @@
 import "./about.css"
 
-
 const About = (props) => {
 
     return (

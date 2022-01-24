@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
-import { playerBoardNames } from "../../context";
+import { boardNamesArr } from "../../context";
 import { imageApiUrl } from "../../context";
 
 import blank from "./default.png"
@@ -43,13 +42,13 @@ const PlayerCard = (props) => {
                 </thead>
                 <tbody>
                     {
-                    playerBoardNames.map(statName => {
-                        const stat = findStat(statName, stats)
+                    boardNamesArr.map(board => {
+                        const stat = findStat(board.value, stats)
                         return (
-                            <tr key={statName}>
-                                <td>{statName}</td>
-                                <td>{stat.score != -1 ? stat.score : "?"}</td>
-                                <td>{stat.position != -1 ? stat.position : "?"}</td>
+                            <tr key={board.value}>
+                                <td>{board.label}</td>
+                                <td>{stat.score !== -1 ? stat.score : "?"}</td>
+                                <td>{stat.position !== -1 ? stat.position : "?"}</td>
                             </tr>
                         )
                     })

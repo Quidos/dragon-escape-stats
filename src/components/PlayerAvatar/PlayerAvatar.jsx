@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react"
-import { Link } from "react-router-dom"
 import { imageApiUrl } from "../../context";
 
 import "./player-avatar.css"
 import blank from "./avatar-default.png"
 
 
-const PlayerAvatar = ({uuid}) => {
+const PlayerAvatar = (props) => {
     const [imageUrl, setImageUrl] = useState(blank);
-
+    const uuid = props.uuid
+    
     useEffect(() => {
         fetch(`${imageApiUrl}/avatars/${uuid}`)
         .then((res) => res.blob())

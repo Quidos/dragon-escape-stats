@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
-import { url, id, boardNamesArr, statNamesArr, playerBoardNames} from "../../context"
+import { url, boardNamesArr, statNamesArr} from "../../context"
 
-import { useFetch } from "../../context"
 import LeaderboardTable from "../../components/LeaderboardTable/LeaderboardTable"
 import Loading from "../../components/Loading/Loading"
 import Select from "react-select"

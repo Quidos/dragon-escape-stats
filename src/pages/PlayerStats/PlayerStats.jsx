@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import Select from "react-select"
 import Loading from "../../components/Loading/Loading"
 import PlayerCard from "../../components/PlayerCard/PlayerCard"
@@ -25,7 +24,6 @@ const PlayerStats = (props) => {
         fetch(`${url}/v1/java/player/${playerName}/stats/game/DragonEscape/${statName.value}`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             if(data == null) {
                 setPlayerDataType(2)
                 setPlayerData(data)

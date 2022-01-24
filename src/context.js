@@ -16,13 +16,7 @@ export const useFetch = (url) => {
 
 export const url = `https://mpstats.timmi6790.de`
 export const imageApiUrl = `https://crafatar.com`
-
-export const boardNames = ["Wins", "Losses", "Deaths", "GemsEarned"]
-export const statNames = ["Daily", "Weekly", "Monthly", "Yearly", "All"]
-export const playerBoardNames = [
-    "Wins", "SecondPlace", "ThirdPlace", "Losses", "Deaths", "GemsEarned", "TraveledBlocks", "ExpEarned", 
-    "Paralympics"
-]
+export const measurementID = `G-TXQGWGVKYP`
 
 export const boardNamesArr = [
     { value: 'Wins', label: 'Wins' },

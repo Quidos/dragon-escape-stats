@@ -19,7 +19,7 @@ const PlayerStats = (props) => {
     }
 
     const getStats = () => {
-        if(playerName == "") return
+        if(playerName === "") return
         setLoading(true)
         fetch(`${url}/v1/java/player/${playerName}/stats/game/DragonEscape/${statName.value}`)
         .then((res) => res.json())
@@ -56,7 +56,7 @@ const PlayerStats = (props) => {
                         type="text" 
                         value={playerName} 
                         onChange={playerNameChange} 
-                        onKeyDown={(e) => {if(e.keyCode == 13) getStats()}}
+                        onKeyDown={(e) => {if(e.keyCode === 13) getStats()}}
                         placeholder="Search..."
                     />
                 </div>

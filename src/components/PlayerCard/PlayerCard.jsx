@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { boardNamesArr } from "../../context";
 import { imageApiUrl } from "../../context";
 
+import numeral from "numeral";
+
 import blank from "./default.png"
 import "./player-card.css"
 
@@ -47,8 +49,8 @@ const PlayerCard = (props) => {
                         return (
                             <tr key={board.value}>
                                 <td>{board.label}</td>
-                                <td>{stat.score !== -1 ? stat.score : "?"}</td>
-                                <td>{stat.position !== -1 ? stat.position : "?"}</td>
+                                <td>{stat.score !== -1 ? numeral(stat.score).format('0,0') : "?"}</td>
+                                <td>{stat.position !== -1 ? numeral(stat.position).format('0,0') : "?"}</td>
                             </tr>
                         )
                     })

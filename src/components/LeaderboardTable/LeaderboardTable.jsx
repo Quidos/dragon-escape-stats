@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import PlayerAvatar from "../PlayerAvatar/PlayerAvatar"
 
+import numeral from "numeral"
+
 import "./leaderboard-table.css"
 
 const LeaderboardTable = (props) => {
@@ -36,7 +38,7 @@ const LeaderboardTable = (props) => {
                                     <PlayerAvatar uuid={entry.player.uuid}/>
                                     <Link onClick={() => changeQuery(entry.player.name)} to="/player">{entry.player.name}</Link>
                                 </td>
-                                <td>{entry.score}</td>
+                                <td>{numeral(entry.score).format('0,0')}</td>
                             </tr>
                         )
                     })}

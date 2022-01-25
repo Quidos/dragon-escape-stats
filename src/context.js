@@ -28,6 +28,12 @@ export const boardNamesArr = [
     { value: 'TraveledBlocks', label: 'Traveled Blocks' },
     { value: 'ExpEarned', label: 'Exp Earned' },
     { value: 'Paralympics', label: 'Paralympics' },
+    { value: 'WinsSkylands', label: 'Wins Skylands' },
+    { value: 'WinsFen', label: 'Wins Fen' },
+    { value: 'WinsAcropolis', label: 'Wins Acropolis' },
+    { value: 'WinsZodiac', label: 'Wins Zodiac' },
+    { value: 'WinsUtopia', label: 'Wins Utopia' },
+    { value: 'WinsSandstorm', label: 'Wins Sandstorm' },
   ]
 
 export const statNamesArr = [

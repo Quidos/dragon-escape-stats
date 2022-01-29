@@ -1,7 +1,6 @@
 import "./about.css"
 
-const About = (props) => {
-
+const About = () => {
     return (
         <div className="about-container">
             <p>Play Dragon escape on <a href="https://www.mineplex.com/" target="_blank" rel="noopener noreferrer">Mineplex</a> (IP: us.mineplex.com)</p>

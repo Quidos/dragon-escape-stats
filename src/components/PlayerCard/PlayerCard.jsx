@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { boardNamesArr } from "../../context";
+import { statNamesArr } from "../../context";
 import { imageApiUrl } from "../../context";
 
 import numeral from "numeral";
@@ -44,7 +44,7 @@ const PlayerCard = (props) => {
                 </thead>
                 <tbody>
                     {
-                    boardNamesArr.map(board => {
+                    statNamesArr.map(board => {
                         const stat = findStat(board.value, stats)
                         return (
                             <tr key={board.value}>

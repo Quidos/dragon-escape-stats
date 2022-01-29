@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import Select from "react-select"
 import Loading from "../../components/Loading/Loading"
 import PlayerCard from "../../components/PlayerCard/PlayerCard"
-import { url, statNamesArr } from "../../context"
+import { url, boardNamesArr } from "../../context"
 
 import "./player-stats.css"
 
@@ -11,7 +11,7 @@ const PlayerStats = (props) => {
     const [playerName, setPlayerName] = useState(props.query)
     const [playerData, setPlayerData] = useState("")
     const [playerDataType, setPlayerDataType] = useState(0)
-    const [statName, setStatName] = useState(statNamesArr[4])
+    const [boardName, setBoardName] = useState(boardNamesArr[4])
     const [loading, setLoading] = useState(false);
 
     const playerNameChange = (e) => {
@@ -21,9 +21,10 @@ const PlayerStats = (props) => {
     const getStats = () => {
         if(playerName === "") return
         setLoading(true)
-        fetch(`${url}/v1/java/player/${playerName}/stats/game/DragonEscape/${statName.value}`)
+        fetch(`${url}/v1/java/player/${playerName}/stats/game/DragonEscape/${boardName.value}`)
         .then((res) => res.json())
         .then((data) => {
+            console.log(data);
             if(data == null) {
                 setPlayerDataType(2)
                 setPlayerData(data)
@@ -41,7 +42,7 @@ const PlayerStats = (props) => {
 
     useEffect(() => {
         getStats()
-    }, [statName])
+    }, [boardName])
 
 
     return (
@@ -63,10 +64,10 @@ const PlayerStats = (props) => {
 
                 <Select 
                     className="select"
-                    defaultValue={statName} 
-                    value={statName}
-                    onChange={setStatName} 
-                    options={statNamesArr}
+                    defaultValue={boardName} 
+                    value={boardName}
+                    onChange={boardName} 
+                    options={boardNamesArr}
                     isSearchable={false}
                 />
             </div>

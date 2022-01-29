@@ -6,6 +6,18 @@
 
 .search-controls {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 800px;
+}
+
+.choose-game {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.choose-stats {
+    display: flex;
 }
 
 .select {

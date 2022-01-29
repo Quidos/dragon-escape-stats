@@ -19,7 +19,7 @@ function App() {
   }, [])
 
   const [query, setQuery] = useState("");
-  const changeQuery = (playerName) => {
+  const changeQuery = (playerName: string) : void => {
     setQuery(playerName);
   }
 

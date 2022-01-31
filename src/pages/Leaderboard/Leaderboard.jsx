@@ -1,12 +1,7 @@
-import { useState, useEffect } from "react"
-import { url, boards, statNamesArr, categories, createOption, createOptions, stats} from "../../context"
-
-import LeaderboardTable from "../../components/LeaderboardTable/LeaderboardTable"
-import Loading from "../../components/Loading/Loading"
+import {categories, createOption, createOptions, stats} from "../../context"
 import Select from "react-select"
 
 import "./leaderboard.css"
-//import LeaderboardDisplayer from "../../components/LeaderboardDisplayer/LeaderboardDisplayer"
 import { useNavigate, useParams } from "react-router-dom"
 import LeaderboardDisplayer from "../../components/LeaderboardDisplayer/LeaderboardDisplayer"
 
@@ -25,14 +20,19 @@ const Leaderboard = (props) => {
                 {categories.map(category => {
                     return (
                         <Select 
-                        className="select"
-                        key={category.categoryName}
-                        defaultValue={category.categoryName}
-                        options={ createOptions(category.games)}
-                        onChange={handleLeaderboardChange}
-                        menuPortalTarget={document.body} 
-                        styles={{ menuPortal: base => ({ ...base, zIndex: 1 }) }}
-                        value="test"
+                            className="select"
+                            key={category.categoryName}
+                            defaultValue={createOption(category.categoryName)}
+                            value={createOption(category.categoryName)}
+                            options={ createOptions(category.games)}
+                            onChange={handleLeaderboardChange}
+                            menuPortalTarget={document.body} 
+                            styles={{ 
+                                menuPortal: base => ({ ...base, zIndex: 1 }),
+                                container: provided => ({
+                                    ...provided,
+                                    width: "190px"
+                                }) }}
                     />
                     )
                 })}

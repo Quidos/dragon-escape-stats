@@ -23,6 +23,7 @@ export function createOptions(arr: string[]) : Option[] {
 
 export const url = `https://mpstats.timmi6790.de`
 export const imageApiUrl = `https://crafatar.com`
+export const mojangApiUrl = `https://api.mojang.com`
 export const measurementID = `G-TXQGWGVKYP`
 
 export const statNamesArr: Option[] = [
@@ -47,13 +48,13 @@ export const boards = ["Daily", "Weekly", "Monthly", "Yearly", "All"]
 
 export const categories = [
   {
-    categoryName: "Global Stats",
+    categoryName: "Global",
     games: [ 
       'Global', 'Track'
     ]
     },
   {
-    categoryName: "Arcade Games",
+    categoryName: "Arcade",
     games: [
       'TurfWars',        'MilktheCow',
       'MicroBattle',     'BombLobbers',
@@ -70,13 +71,13 @@ export const categories = [
     ]
   },
   {
-    categoryName: "Champion Games",
+    categoryName: "Champion",
     games: [ 
       'ChampionsDomination', 'ChampionsCTF', 'Clans' 
     ]
     },
     {
-      categoryName: "Survival Games",
+      categoryName: "Survival",
       games: [
         'CakeWarsStandard',
         'SurvivalGames',
@@ -87,7 +88,7 @@ export const categories = [
       ]
       },
     {
-    categoryName: "Classic Games",
+    categoryName: "Classic",
     games: [
       'MasterBuilders',
       'MineStrike',
@@ -100,7 +101,7 @@ export const categories = [
     ]
     },
     {
-    categoryName: "MPS Only Games",
+    categoryName: "MPS Only",
     games: [
       'SnowFight',
       'HeroesofGWEN',
@@ -111,7 +112,7 @@ export const categories = [
     ]
     },
     {
-    categoryName: "Removed Games",
+    categoryName: "Removed",
     games: [
       'TypeWars',
       'Skyfall',
@@ -168,11 +169,11 @@ export const categories = [
     ]
     },
     {
-      categoryName: "Meme Games",
+      categoryName: "Meme",
       games: [ 'Area51Raid' ]
       },
     {
-    categoryName: "Season Games",
+    categoryName: "Season",
     games: [
       'HalloweenHorror',
       'RoseRush',
@@ -185,7 +186,7 @@ export const categories = [
     ]
     },
     {
-    categoryName: "Unreleased Games",
+    categoryName: "Unreleased",
     games: [
       'DragonRiders',
       'CraftAgainstHumanity',

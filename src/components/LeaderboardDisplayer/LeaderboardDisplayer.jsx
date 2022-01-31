@@ -48,16 +48,18 @@ const LeaderboardDisplayer = (props) => {
             <div className="choose-stats">
                 <Select 
                     className="select"
-                    defaultValue={statName} 
-                    value={statName}
+                    defaultValue={createOption(statName)} 
+                    value={createOption(statName)}
                     options={createOptions(statNames)}
                     isSearchable={false}
                     onChange={handleStatNameChange}
+                    menuPortalTarget={document.body} 
+                    styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
                 />
                 <Select 
                     className="select"
-                    defaultValue={boardName} 
-                    value={boardName}
+                    defaultValue={createOption(boardName)}
+                    value={createOption(boardName)}
                     onChange={handleBoardNameChange} 
                     options={createOptions(boards)}
                     isSearchable={false}
@@ -67,8 +69,10 @@ const LeaderboardDisplayer = (props) => {
             </div>
             {
                 loading ? 
-                <Loading /> :
-                <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} />
+                    <Loading /> :
+                    leaderboardData.status == 404 ?
+                        <div>No results</div> :
+                        <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} />
             }
         </div>
     )

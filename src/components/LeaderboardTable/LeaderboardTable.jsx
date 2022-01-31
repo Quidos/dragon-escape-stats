@@ -7,7 +7,6 @@ import numeral from "numeral"
 import "./leaderboard-table.css"
 
 const LeaderboardTable = (props) => {
-    const changeQuery = props.queryChanger
 
     const [page, setPage] = useState(0)
     const entries = props.entries
@@ -36,7 +35,7 @@ const LeaderboardTable = (props) => {
                                 <td>{i + 1 + page * perPage}</td>
                                 <td>
                                     <PlayerAvatar uuid={entry.player.uuid}/>
-                                    <Link onClick={() => changeQuery(entry.player.name)} to="/player">{entry.player.name}</Link>
+                                    <Link to={`/player/${entry.player.name}`}>{entry.player.name}</Link>
                                 </td>
                                 <td>{numeral(entry.score).format('0,0')}</td>
                             </tr>

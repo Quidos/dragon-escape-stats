@@ -4,7 +4,7 @@ import PlayerStats from "./pages/PlayerStats/PlayerStats";
 import About from "./pages/About/About";
 import Navbar from "./components/Navbar/Navbar";
 import { measurementID } from "./context"
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ReactGA from "react-ga4"
 
 import "./index.css"
@@ -18,19 +18,17 @@ function App() {
     ReactGA.send("pageview")
   }, [])
 
-  const [query, setQuery] = useState("");
-  const changeQuery = (playerName: string) : void => {
-    setQuery(playerName);
-  }
-
   return (
     <BrowserRouter>
       <Navbar />
       <Sidebar />
       <div className="main-container">
         <Routes>
-          <Route path="/" element={<Leaderboard queryChanger={changeQuery}/>} />
-          <Route path="/player" element={<PlayerStats query={query} queryChanger={changeQuery} />} />
+          <Route path="/" element={<Navigate to="/leaderboards/Global" />} />
+          <Route path="/leaderboards" element={<Navigate to="/leaderboards/Global" />} />
+          <Route path="/leaderboards/:leaderboardName" element={<Leaderboard />} />
+          <Route path="/player" element={<PlayerStats />} />
+          <Route path="/player/:playerName" element={<PlayerStats />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </div>

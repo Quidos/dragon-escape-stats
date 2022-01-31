@@ -2,7 +2,14 @@ export interface Option {
   label: string;
   value: string;
 }
-// test
+
+export function createOption(inp: string) : Option {
+  const temp: Option = {
+    label: inp,
+    value: inp
+  }
+  return temp
+}
 
 export function createOptions(arr: string[]) : Option[] {
   return arr.map(name => {
@@ -12,10 +19,6 @@ export function createOptions(arr: string[]) : Option[] {
     }
     return temp;
   })
-}
-
-export function getBoardNames(leaderboard: any[]) : string[] {
-  return Array.from(new Set(leaderboard.map(obj => obj.stat.statName)))
 }
 
 export const url = `https://mpstats.timmi6790.de`
@@ -40,15 +43,15 @@ export const statNamesArr: Option[] = [
     { value: 'WinsSandstorm', label: 'Wins Sandstorm' },
   ]
 
-export const boardNamesArr: Option[] = [
-    { value: 'Daily', label: 'Daily' },
-    { value: 'Weekly', label: 'Weekly' },
-    { value: 'Monthly', label: 'Monthly' },
-    { value: 'Yearly', label: 'Yearly' },
-    { value: 'All', label: 'All Time' },
-  ]
+export const boards = ["Daily", "Weekly", "Monthly", "Yearly", "All"]
 
 export const categories = [
+  {
+    categoryName: "Global Stats",
+    games: [ 
+      'Global', 'Track'
+    ]
+    },
   {
     categoryName: "Arcade Games",
     games: [
@@ -73,6 +76,17 @@ export const categories = [
     ]
     },
     {
+      categoryName: "Survival Games",
+      games: [
+        'CakeWarsStandard',
+        'SurvivalGames',
+        'SurvivalGamesTeams',
+        'Skywars',
+        'CakeWarsDuos',
+        'SkywarsTeams'
+      ]
+      },
+    {
     categoryName: "Classic Games",
     games: [
       'MasterBuilders',
@@ -84,16 +98,6 @@ export const categories = [
       'TheBridges',
       'UHCRemastered'
     ]
-    },
-    {
-    categoryName: "Global Stats",
-    games: [ 
-      'Global', 'Track'
-    ]
-    },
-    {
-    categoryName: "Meme Games",
-    games: [ 'Area51Raid' ]
     },
     {
     categoryName: "MPS Only Games",
@@ -164,6 +168,10 @@ export const categories = [
     ]
     },
     {
+      categoryName: "Meme Games",
+      games: [ 'Area51Raid' ]
+      },
+    {
     categoryName: "Season Games",
     games: [
       'HalloweenHorror',
@@ -174,17 +182,6 @@ export const categories = [
       'ValentinesVendetta',
       'BattleRoyale',
       'HalloweenHavocOld'
-    ]
-    },
-    {
-    categoryName: "Survival Games",
-    games: [
-      'CakeWarsStandard',
-      'SurvivalGames',
-      'SurvivalGamesTeams',
-      'Skywars',
-      'CakeWarsDuos',
-      'SkywarsTeams'
     ]
     },
     {
@@ -568,6 +565,7 @@ export const stats = {
     'Warrior'
   ],
   Global: [
+    'GamesPlayed',
     'WeeklyMissions',
     'DailyMissions',
     'EventMissions',
@@ -575,7 +573,6 @@ export const stats = {
     'GemsEarned',
     'DailyRewards',
     'IngameTime',
-    'GamesPlayed',
     'HubTime',
     'ClansDailyRewards',
     'DailyVotes',

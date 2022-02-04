@@ -1,5 +1,5 @@
-import PlayerOverview from "../PlayerOverview/PlayerOverview"
-import "./player-card.css"
+import PlayerData from "./PlayerData"
+import PlayerOverview from "./PlayerOverview"
 
 
 const PlayerCard = (props) => {
@@ -8,6 +8,7 @@ const PlayerCard = (props) => {
     return (
         <div className="player-card">
             <PlayerOverview playerName={playerName} />
+            <PlayerData playerName={playerName} />
         </div>
     )
 }

@@ -21,28 +21,26 @@ export function createOptions(arr: string[]) : Option[] {
   })
 }
 
+export function getCategoryNames(): string[] {
+  return categories.map(obj => obj.categoryName)
+}
+
+export function getLeaderboarNames(categoryName: string): string[] {
+  return categories.filter((cat) => cat.categoryName == categoryName)[0].games
+}
+
+export function getStatNames(leaderboardName: string): string[] {
+  return stats[leaderboardName]
+}
+
 export const url = `https://mpstats.timmi6790.de`
 export const imageApiUrl = `https://crafatar.com`
-export const mojangApiUrl = `https://api.mojang.com`
+export const ashconApiUrl = `https://api.ashcon.app`
 export const measurementID = `G-TXQGWGVKYP`
 
-export const statNamesArr: Option[] = [
-    { value: 'Wins', label: 'Wins' },
-    { value: 'SecondPlace', label: 'Second Place' },
-    { value: 'ThirdPlace', label: 'Third Place' },
-    { value: 'Losses', label: 'Losses' },
-    { value: 'Deaths', label: 'Deaths' },
-    { value: 'GemsEarned', label: 'Gems Earned' },
-    { value: 'TraveledBlocks', label: 'Traveled Blocks' },
-    { value: 'ExpEarned', label: 'Exp Earned' },
-    { value: 'Paralympics', label: 'Paralympics' },
-    { value: 'WinsSkylands', label: 'Wins Skylands' },
-    { value: 'WinsFen', label: 'Wins Fen' },
-    { value: 'WinsAcropolis', label: 'Wins Acropolis' },
-    { value: 'WinsZodiac', label: 'Wins Zodiac' },
-    { value: 'WinsUtopia', label: 'Wins Utopia' },
-    { value: 'WinsSandstorm', label: 'Wins Sandstorm' },
-  ]
+export const globalKey = `Game(repositoryId=34, websiteName=Global, gameName=Global, cleanName=Global, aliasNames=[G], categoryName=Global Stats, description=null, wikiUrl=null)`
+export const gamesPlayedKey = `Stat(repositoryId=115, websiteName=GamesPlayed, statName=GamesPlayed, cleanName=Games Played, description=null, achievement=false, aliasNames=[gp ], sortingPriority=900, type=NUMBER)`
+export const ExpEarnedKey = `Stat(repositoryId=153, websiteName=ExpEarned, statName=ExpEarned, cleanName=Exp Earned, description=null, achievement=false, aliasNames=[e, addiction, xp, exp], sortingPriority=500, type=NUMBER)`
 
 export const boards = ["Daily", "Weekly", "Monthly", "Yearly", "All"]
 
@@ -201,7 +199,11 @@ export const categories = [
     }
   ]
 
-export const stats = {
+interface dict {
+  [key: string]: any
+}
+
+export const stats: dict = {
   MilktheCow: [
     'SecondPlace',
     'GemsEarned',

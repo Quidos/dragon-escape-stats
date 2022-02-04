@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react"
+import { getCategories } from "../../util";
 
-import "./player-Data.css"
 
-
-const PlayerData = (props) => {
+const PlayerData = ({ leaderboard }) => {
+    console.log(getCategories());
     const [playerData, setPlayerData] = useState("")
     const [boardName, setBoardName] = useState(boards[4])
 
@@ -33,29 +33,7 @@ const PlayerData = (props) => {
     }
 
     return (
-        <table className="player-card-table-main">
-        <thead>
-            <tr>
-                <th>Stat</th>
-                <th>Score</th>
-                <th>Rank</th>
-            </tr>
-        </thead>
-        <tbody>
-            {
-            statNamesArr.map(board => {
-                const stat = findStat(board.value, stats)
-                return (
-                    <tr key={board.value}>
-                        <td>{board.label}</td>
-                        <td>{stat.score !== -1 ? numeral(stat.score).format('0,0') : "?"}</td>
-                        <td>{stat.position !== -1 ? numeral(stat.position).format('0,0') : "?"}</td>
-                    </tr>
-                )
-            })
-        }
-        </tbody>
-    </table>
+        <div>h</div>
     )
 }
 

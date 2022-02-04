@@ -1,10 +1,9 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import PlayerAvatar from "../PlayerAvatar/PlayerAvatar"
+import PlayerAvatar from "./PlayerAvatar"
 
 import numeral from "numeral"
 
-import "./leaderboard-table.css"
 
 const LeaderboardTable = (props) => {
 

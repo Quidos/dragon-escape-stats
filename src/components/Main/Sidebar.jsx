@@ -1,8 +1,5 @@
 import { Link } from "react-router-dom"
 
-import "./sidebar.css"
-
-
 const Sidebar = (props) => {
     return (
         <div className="sidebar">

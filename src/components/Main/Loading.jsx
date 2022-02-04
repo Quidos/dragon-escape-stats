@@ -1,5 +1,3 @@
-import "./loading.css"
-
 
 const Loading = (props) => {
     return (

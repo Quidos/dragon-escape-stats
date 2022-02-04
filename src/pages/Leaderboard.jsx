@@ -1,9 +1,8 @@
-import {categories, createOption, createOptions, stats} from "../../context"
+import {categories, createOption, createOptions, stats} from "../util"
 import Select from "react-select"
 
-import "./leaderboard.css"
 import { useNavigate, useParams } from "react-router-dom"
-import LeaderboardDisplayer from "../../components/LeaderboardDisplayer/LeaderboardDisplayer"
+import LeaderboardDisplayer from "../components/Leaderboard/LeaderboardDisplayer"
 
 
 const Leaderboard = (props) => {

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react"
-import { imageApiUrl } from "../../context";
+import { imageApiUrl } from "../../util";
 
-import "./player-avatar.css"
-import blank from "./avatar-default.png"
+import blank from "../../sources/avatar-default.png"
 
 
 const PlayerAvatar = (props) => {

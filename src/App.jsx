@@ -1,14 +1,14 @@
 import {useState, useEffect} from "react"
-import Leaderboard from "./pages/Leaderboard/Leaderboard";
-import PlayerStats from "./pages/PlayerStats/PlayerStats";
-import About from "./pages/About/About";
-import Navbar from "./components/Navbar/Navbar";
-import { measurementID } from "./context"
+import Leaderboard from "./pages/Leaderboard";
+import PlayerStats from "./pages/PlayerStats";
+import About from "./pages/About";
+import Navbar from "./components/Main/Navbar";
+import { measurementID } from "./util"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ReactGA from "react-ga4"
 
 import "./index.css"
-import Sidebar from "./components/Sidebar/Sidebar";
+import Sidebar from "./components/Main/Sidebar";
 
 function App() {
 

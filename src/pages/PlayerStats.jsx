@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import Select from "react-select"
-import Loading from "../../components/Loading/Loading"
-import PlayerCard from "../../components/PlayerCard/PlayerCard"
-import { url, boards, createOption, createOptions } from "../../context"
-
-import "./player-stats.css"
+import Loading from "../components/Main/Loading"
+import PlayerCard from "../components/PlayerStats/PlayerCard"
+import { url, boards, createOption, createOptions } from "../util"
 
 
 const PlayerStats = (props) => {

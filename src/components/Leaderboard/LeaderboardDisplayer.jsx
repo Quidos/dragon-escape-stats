@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react"
-import { url, boards, statNamesArr, categories, createOption, createOptions, stats} from "../../context"
+import { url, boards, statNamesArr, categories, createOption, createOptions, stats} from "../../util"
 
-import LeaderboardTable from "../../components/LeaderboardTable/LeaderboardTable"
-import Loading from "../../components/Loading/Loading"
+import LeaderboardTable from "./LeaderboardTable"
+import Loading from "../Main/Loading"
 import Select from "react-select"
-
-import "./leaderboard-displayer.css"
 
 
 const LeaderboardDisplayer = (props) => {

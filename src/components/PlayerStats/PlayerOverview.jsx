@@ -52,7 +52,7 @@ const PlayerOverview = (props) => {
             <div>friends: {websiteData.gameStats[globalKey].otherStats.Friends}</div>
             <div>games: {websiteData.gameStats[globalKey].stats[gamesPlayedKey]}</div>
             <div>exp: {websiteData.gameStats[globalKey].stats[ExpEarnedKey]}</div>
-            <div>names: {accountData.code != 404 ? accountData.username_history.map(obj => (<div key={obj.username}>{obj.username}</div>)) : (<div>g</div>)}</div>
+            <div>names: {accountData.code != 404 ? accountData.username_history.map(obj => (<div key={Math.random()}>{obj.username}</div>)) : (<div>g</div>)}</div>
         </div>
     )
 }

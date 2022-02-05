@@ -27,8 +27,8 @@ function App() {
           <Route path="/" element={<Navigate to="/leaderboards/Global" />} />
           <Route path="/leaderboards" element={<Navigate to="/leaderboards/Global" />} />
           <Route path="/leaderboards/:leaderboardName" element={<Leaderboard />} />
-          <Route path="/player" element={<PlayerStats />} />
-          <Route path="/player/:playerName" element={<PlayerStats />} />
+          <Route path="/player" element={<PlayerStats key={Date.now()} />} />
+          <Route path="/player/:playerName" element={<PlayerStats key={Math.random()} />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </div>

@@ -21,6 +21,10 @@ export function createOptions(arr: string[]) : Option[] {
   })
 }
 
+export function parseOption(inp: Option) : string {
+  return inp.value
+}
+
 export function getCategoryNames(): string[] {
   return categories.map(obj => obj.categoryName)
 }
@@ -31,6 +35,18 @@ export function getLeaderboarNames(categoryName: string): string[] {
 
 export function getStatNames(leaderboardName: string): string[] {
   return stats[leaderboardName]
+}
+
+export function getBoardNames() {
+  return boards
+}
+
+export async function fetchPlayerData(playerName: string, gameName: string, boardName: string) {
+  const res = await fetch(`${url}/v1/java/player/${playerName}/stats/game/${gameName}/${boardName}`)
+  if(!res.ok) throw new Error("err")
+  
+  const data = await res.json()
+  return data
 }
 
 export const url = `https://mpstats.timmi6790.de`

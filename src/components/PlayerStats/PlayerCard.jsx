@@ -1,4 +1,4 @@
-import PlayerData from "./PlayerData"
+import PlayerAccordion from "./PlayerAccordion"
 import PlayerOverview from "./PlayerOverview"
 
 
@@ -8,7 +8,7 @@ const PlayerCard = (props) => {
     return (
         <div className="player-card">
             <PlayerOverview playerName={playerName} />
-            <PlayerData playerName={playerName} />
+            <PlayerAccordion playerName={playerName} />
         </div>
     )
 }

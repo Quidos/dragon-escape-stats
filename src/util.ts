@@ -41,14 +41,6 @@ export function getBoardNames() {
   return boards
 }
 
-export async function fetchPlayerData(playerName: string, gameName: string, boardName: string) {
-  const res = await fetch(`${url}/v1/java/player/${playerName}/stats/game/${gameName}/${boardName}`)
-  if(!res.ok) throw new Error("err")
-  
-  const data = await res.json()
-  return data
-}
-
 export const url = `https://mpstats.timmi6790.de`
 export const imageApiUrl = `https://crafatar.com`
 export const ashconApiUrl = `https://api.ashcon.app`

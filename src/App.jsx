@@ -9,6 +9,7 @@ import ReactGA from "react-ga4"
 
 import "./index.css"
 import Sidebar from "./components/Main/Sidebar";
+import PlayerSearch from "./pages/PlayerSearch";
 
 function App() {
 
@@ -27,8 +28,8 @@ function App() {
           <Route path="/" element={<Navigate to="/leaderboards/Global" />} />
           <Route path="/leaderboards" element={<Navigate to="/leaderboards/Global" />} />
           <Route path="/leaderboards/:leaderboardName" element={<Leaderboard />} />
-          <Route path="/player" element={<PlayerStats key={Date.now()} />} />
-          <Route path="/player/:playerName" element={<PlayerStats key={Math.random()} />} />
+          <Route path="/player" element={<PlayerSearch />} />
+          <Route path="/player/:playerName" element={<PlayerStats />} />
           <Route path="/about" element={<About />} />
         </Routes>
       </div>

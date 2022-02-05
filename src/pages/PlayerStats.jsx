@@ -1,39 +1,15 @@
-import { useState, useEffect } from "react"
-import { useNavigate, useParams } from "react-router-dom"
-import Select from "react-select"
-import Loading from "../components/Main/Loading"
-import PlayerCard from "../components/PlayerStats/PlayerCard"
-import { url, boards, createOption, createOptions } from "../util"
+import { useParams } from "react-router-dom"
+import PlayerAccordion from "../components/PlayerStats/PlayerAccordion"
+import PlayerOverview from "../components/PlayerStats/PlayerOverview"
 
 
 const PlayerStats = (props) => {
-    const {playerName} = useParams()
-    const [query, setQuery] = useState("");
-    const navigate = useNavigate()
+    const { playerName } = useParams()
 
     return (
-        <div className="player-stats-container">
-            <div className="player-search-controls">
-                <div className="player-search">
-                    <button className="search-button" onClick={() => navigate(`/player/${query}`)}>
-                        <i className="fas fa-search fa-lg"></i>
-                    </button>
-                    <input 
-                        className="player-input" 
-                        type="text" 
-                        value={query} 
-                        onChange={(e) => setQuery(e.target.value)} 
-                        onKeyDown={(e) => {if(e.keyCode === 13) navigate(`/player/${query}`)}}
-                        placeholder="Search..."
-                    />
-                </div>
-            </div>
-            {
-                playerName == null ? 
-                    (<></>)
-                    : 
-                    <PlayerCard playerName={playerName} /> 
-            }
+        <div className="player-stats">
+            <PlayerOverview playerName={playerName} />
+            <PlayerAccordion playerName={playerName} />
         </div>
     )
 }

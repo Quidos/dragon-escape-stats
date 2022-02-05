@@ -7,12 +7,11 @@ import {
     createOption, 
     createOptions, 
     parseOption,
-    fetchPlayerData
 } from "../../util";
+import { fetchPlayerData } from "../../ApiUtils";
 import Loading from "../Main/Loading";
-import PlayerStatTable from "./PlayerStatTable";
 
-import numeral from "numeral"
+import PlayerTable from "./PlayerTable";
 
 const Actions = {
     CATEGORY_NAME_CHANGE: 0,
@@ -72,6 +71,7 @@ const reducer = (currState, action) => {
 
 
 const PlayerAccordion = ({ playerName }) => {
+
     const initialState = {
         playerName: playerName,
         categoryNames: getCategoryNames(),
@@ -106,7 +106,7 @@ const PlayerAccordion = ({ playerName }) => {
     }, [state.leaderboardName, state.boardName])
 
     return (
-        <div className="player-accordion">
+        <div className="accordion">
             <div className="choose-category">
                 {state.categoryNames.map(category => {
                     return (
@@ -119,61 +119,42 @@ const PlayerAccordion = ({ playerName }) => {
                     )
                 })}
             </div>
-            <div className="accordion">
+            <div className="accordion-main">
                 {
                 state.leaderboardNames.map((lname) => (
-                    <div className="entry">
-                        <button
+                    <div className="accordion-item">
+                        <div
+                            className="accordion-title"
                             onClick={handleLeaderboardNameChange}
                         >
                             {lname}
-                        </button>
-                        <Select 
-                            className="select"
-                            defaultValue={createOption(state.boardName)} 
-                            value={createOption(state.boardName)}
-                            options={createOptions(state.boardNames)}
-                            isSearchable={false}
-                            onChange={handleBoardNameChange}
-
-                            menuPortalTarget={document.body} 
-                            styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
-                        />
-                        <div className="player-data">
-                            {
-                                state.loading ?
-                                    <Loading />
-                                    :
-                                    state.playerData == null ?
-                                        <div>No results </div>
-                                        :
-                                        <table className="player-data-table">
-                                            <thead>
-                                                <tr>
-                                                    <th>Stat</th>
-                                                    <th>Score</th>
-                                                    <th>Rank</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                {
-                                                    state.playerData.stats.map((obj) => {
-                                                        const cleanName = obj.leaderboard.stat.cleanName
-                                                        const score = obj.score
-                                                        const position = obj.position
-                                                        return (
-                                                            <tr key={cleanName}>
-                                                                <td>{cleanName}</td>
-                                                                <td>{score !== -1 ? numeral(score).format('0,0') : "?"}</td>
-                                                                <td>{position !== -1 ? numeral(position).format('0,0') : "?"}</td>
-                                                            </tr>
-                                                        )
-                                                    })
-                                                }
-                                            </tbody>
-                                        </table>
-                            }
                         </div>
+                        {
+                            state.leaderboardName == lname ?
+                                <div className="accordion-content">
+                                <Select 
+                                    className="select"
+                                    defaultValue={createOption(state.boardName)} 
+                                    value={createOption(state.boardName)}
+                                    options={createOptions(state.boardNames)}
+                                    isSearchable={false}
+                                    onChange={handleBoardNameChange}
+
+                                    menuPortalTarget={document.body} 
+                                    styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
+                                />
+                                <div className="player-data">
+                                    {
+                                        state.loading ?
+                                            <Loading />
+                                            :
+                                            <PlayerTable playerData={state.playerData} />
+                                    }
+                                </div>
+                            </div>
+                            :
+                            <></>
+                        }
                     </div>
                 ))
                 }

@@ -7,7 +7,7 @@ const PlayerStats = (props) => {
     const { playerName } = useParams()
 
     return (
-        <div className="player-stats">
+        <div className="pt-16 pl-52 flex">
             <PlayerOverview playerName={playerName} />
             <PlayerAccordion playerName={playerName} />
         </div>

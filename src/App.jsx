@@ -2,7 +2,7 @@ import {useState, useEffect} from "react"
 import Leaderboard from "./pages/Leaderboard";
 import PlayerStats from "./pages/PlayerStats";
 import About from "./pages/About";
-import Navbar from "./components/Main/Navbar";
+import Header from "./components/Main/Header";
 import { measurementID } from "./util"
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import ReactGA from "react-ga4"
@@ -21,9 +21,8 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Navbar />
+      <Header />
       <Sidebar />
-      <div className="main-container">
         <Routes>
           <Route path="/" element={<Navigate to="/leaderboards/Global" />} />
           <Route path="/leaderboards" element={<Navigate to="/leaderboards/Global" />} />
@@ -32,7 +31,6 @@ function App() {
           <Route path="/player/:playerName" element={<PlayerStats />} />
           <Route path="/about" element={<About />} />
         </Routes>
-      </div>
     </BrowserRouter>
   );
 }

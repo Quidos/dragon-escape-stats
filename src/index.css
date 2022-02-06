@@ -1,5 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
     --base-color: rgb(87, 204, 71);
 }
@@ -8,7 +12,7 @@ html, body {
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
     font-family: "Play", sans-serif;
-    font-size: larger;
+    font-size: large;
     margin: 0;
 }
 
@@ -190,45 +194,14 @@ LeaderboardDisplayer
 LeaderboardTable
 */
 
-.leaderboard-table {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .leaderboard-table-main {
-    width: 100%;
     border-collapse: collapse;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 5px 5px 0 0;
 }
 
-.leaderboard-table-main thead tr{
-    text-align: center;
-    text-decoration: none;
-}
 
-.leaderboard-table-main thead tr th{
-    text-align: center;
-    border: 1px solid #dddddd;
-}
-
-.leaderboard-table-main tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.leaderboard-table-main tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.leaderboard-table-main tbody tr:last-of-type {
-    border-bottom: 2px solid #3cbb22;
-}
-
-.leaderboard-table-main tbody tr td{
-    border: 1px solid #dddddd;
-    padding: 2px 40px 2px 20px;
-}
 
 
 .table-controls {
@@ -244,16 +217,6 @@ LeaderboardTable
     size: 30px;
     color: rgb(106, 238, 89);
     cursor: pointer;
-}
-
-.leaderboard-table a{
-    text-decoration: none;
-    color: rgb(60, 190, 43);
-    padding-left: 10px;
-}
-
-.leaderboard-table a:hover{
-    color: rgb(34, 122, 23);
 }
 
 
@@ -302,33 +265,6 @@ Loading
       height: 32px;
     }
   }
-
-/*
-Navbar
-*/
-
-.navbar {
-    position: fixed;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    background-color: var(--base-color);
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    z-index: 9999;
-}
-
-.icon {
-    margin-right: 15px;
-    margin-left: 20px;
-    color: white;
-}
-.logo {
-    display: inline-block;
-    color: white;
-    font-weight: bold;
-    cursor: default;
-}
 
 /*
 PlayerAvatar
@@ -408,43 +344,7 @@ PlayerCard
 Sidebar
 */
 
-.sidebar {
-    position: fixed;
-    margin-top: 80px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(124, 124, 124);
-    height: 100%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    z-index: 9999;
-}
 
-.home-text {
-    display: inline-block;
-    padding-left: 10px;
-}
-
-.player-stats-text {
-    display: inline-block;
-    padding-left: 15px;
-}
-
-.about-text {
-    display: inline-block;
-    padding-left: 12px;
-}
-
-.sidebar a {
-    text-decoration: none;
-    color: rgb(238, 238, 238);
-    padding: 10px 70px 10px 20px;
-}
-
-.sidebar a:hover {
-    background-color: rgb(73, 73, 73);
-    color: white;
-    transition: background-color 200ms linear, color 200ms linear;
-}
 
 @media screen and (max-width: 1000px) {
     .sidebar {

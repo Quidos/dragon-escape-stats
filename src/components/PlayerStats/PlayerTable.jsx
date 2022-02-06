@@ -1,6 +1,8 @@
 import numeral from "numeral"
 
 const PlayerTable = ({ playerData }) => {
+    console.log(playerData)
+
 
     return (
         <table className="player-data-table">
@@ -20,7 +22,9 @@ const PlayerTable = ({ playerData }) => {
                         <td>{"0"}</td>
                     </tr> 
             :
-                playerData.stats.map((obj) => {
+                playerData.stats
+                .sort((a, b) => b.leaderboard.stat.sortingPriority - a.leaderboard.stat.sortingPriority)
+                .map((obj) => {
                     const cleanName = obj.leaderboard.stat.cleanName
                     const score = obj.score
                     const position = obj.position

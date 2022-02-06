@@ -18,25 +18,35 @@ const LeaderboardTable = (props) => {
     }
 
     return (
-        <div className="leaderboard-table">
+        <div className="flex flex-col items-center">
             <table className="leaderboard-table-main">
                 <thead>
                     <tr>
-                        <th>Rank</th>
-                        <th>Name</th>
-                        <th>Score</th>
+                        <th className="border border-solid border-gray-200">Rank</th>
+                        <th className="border border-solid border-gray-200">Name</th>
+                        <th className="border border-solid border-gray-200">Score</th>
                     </tr>
                 </thead>
                 <tbody>
                     {entries.slice(page * perPage, page * perPage + perPage).map((entry, i) => {
                         return(
-                            <tr key={entry.player.name}>
-                                <td>{i + 1 + page * perPage}</td>
-                                <td>
-                                    <PlayerAvatar uuid={entry.player.uuid}/>
-                                    <Link to={`/player/${entry.player.name}`}>{entry.player.name}</Link>
+                            <tr 
+                                className="border border-solid border-gray-200 even:bg-gray-200"
+                                key={entry.player.name}
+                            >
+                                <td className="border border-solid border-gray-300 py-1 pr-8 pl-5">
+                                    {i + 1 + page * perPage}
                                 </td>
-                                <td>{numeral(entry.score).format('0,0')}</td>
+                                <td className="border border-solid border-gray-300 py-1 pr-16 pl-5">
+                                    <PlayerAvatar uuid={entry.player.uuid}/>
+                                    <Link 
+                                        className="no-underline pl-2 text-cyan-400 font-semibold hover:text-cyan-600"
+                                        to={`/player/${entry.player.name}`}>{entry.player.name}
+                                    </Link>
+                                </td>
+                                <td className="border border-solid border-gray-300 py-1 pr-5 pl-5">
+                                    {numeral(entry.score).format('0,0')}
+                                </td>
                             </tr>
                         )
                     })}

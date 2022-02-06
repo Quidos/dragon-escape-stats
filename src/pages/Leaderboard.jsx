@@ -14,8 +14,8 @@ const Leaderboard = (props) => {
     }
 
     return (
-        <div className="leaderboard-container">
-            <div className="choose-leaderboard">
+        <div className="flex flex-col items-center pt-16 pl-52">
+            <div className="flex flex-wrap">
                 {categories.map(category => {
                     return (
                         <Select 

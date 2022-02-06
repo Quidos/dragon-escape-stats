@@ -1,6 +1,6 @@
 const About = () => {
     return (
-        <div className="about-container">
+        <div className="pt-16 pl-52">
             <p>Play Dragon escape on <a href="https://www.mineplex.com/" target="_blank" rel="noopener noreferrer">Mineplex</a> (IP: us.mineplex.com)</p>
             <p>Check out the project <a href="https://github.com/Quidos/dragon-escape-stats" target="_blank" rel="noopener noreferrer">here</a></p>
             <p>Web app made by <a href="https://github.com/Quidos" target="_blank" rel="noopener noreferrer">Quidos</a></p>

@@ -41,8 +41,8 @@ const LeaderboardDisplayer = (props) => {
     }
 
     return (
-        <div className="leaderboard-displayer-container">
-            <h4>{leaderboardName}</h4>
+        <div className="flex flex-col items-center pr-52">
+            <div className="font-bold">{leaderboardName}</div>
             <div className="choose-stats">
                 <Select 
                     className="select"
@@ -72,7 +72,7 @@ const LeaderboardDisplayer = (props) => {
                         <div>No results</div> :
                         <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} />
             }
-        </div>
+            </div>
     )
 }
 

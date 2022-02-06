@@ -17,7 +17,7 @@ const PlayerAvatar = (props) => {
         .catch(err => console.log(err))
     }, [])
     return (
-        <img className="player-avatar-img" src={imageUrl} alt="" />
+        <img className="w-4 inline-block" src={imageUrl} alt="" />
     )
 }
 

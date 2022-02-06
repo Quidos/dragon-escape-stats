@@ -7,8 +7,7 @@ import { fetchPlayerInfo, fetchPlayerWebsite, fetchRender } from "../../ApiUtils
 import blank from "../../sources/default.png"
 
 
-const PlayerOverview = (props) => {
-    const playerName = props.playerName
+const PlayerOverview = ({ playerName }) => {
     const [accountData, setAccountData] = useState(null)
     const [websiteData, setWebsiteData] = useState(null);
     const [imageUrl, setImageUrl] = useState(blank);
@@ -28,9 +27,9 @@ const PlayerOverview = (props) => {
     }, [])
 
     return (
-        <div className="player-overview">
-            <img className="player-img" src={imageUrl} alt="" />
-            <div className="player-name">{playerName}</div>
+        <div className="flex flex-col">
+            <img className="w-32" src={imageUrl} alt="" />
+            <div className="text-cyan-400 font-semibold">{playerName}</div>
             <div className="website-data">
             {
                 websiteData == null ?

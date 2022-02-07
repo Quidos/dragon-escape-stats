@@ -106,11 +106,12 @@ const PlayerAccordion = ({ playerName }) => {
     }, [state.leaderboardName, state.boardName])
 
     return (
-        <div className="accordion">
-            <div className="choose-category">
+        <div className="w-full bg-white">
+            <div className="border w-full">
                 {state.categoryNames.map(category => {
                     return (
                         <button
+                            className="hover:bg-gray-700 text-gray-700 hover:text-white p-1 border border-gray-700 hover:border-transparent rounded m-1"
                             key={category}
                             onClick={handleCategoryNameChange}
                         >
@@ -119,19 +120,19 @@ const PlayerAccordion = ({ playerName }) => {
                     )
                 })}
             </div>
-            <div className="accordion-main">
+            <div className="border">
                 {
                 state.leaderboardNames.map((lname) => (
-                    <div className="accordion-item">
+                    <div key={lname}>
                         <div
-                            className="accordion-title"
+                            className="cursor-pointer m-2 p-2 rounded border-2 border-slate-400 text-gray-800"
                             onClick={handleLeaderboardNameChange}
                         >
                             {lname}
                         </div>
                         {
                             state.leaderboardName == lname ?
-                                <div className="accordion-content">
+                                <div className="m-2">
                                 <Select 
                                     className="select"
                                     defaultValue={createOption(state.boardName)} 
@@ -143,14 +144,12 @@ const PlayerAccordion = ({ playerName }) => {
                                     menuPortalTarget={document.body} 
                                     styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
                                 />
-                                <div className="player-data">
                                     {
                                         state.loading ?
                                             <Loading />
                                             :
                                             <PlayerTable playerData={state.playerData} />
                                     }
-                                </div>
                             </div>
                             :
                             <></>

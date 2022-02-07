@@ -23,14 +23,16 @@ function App() {
     <BrowserRouter>
       <Header />
       <Sidebar />
-        <Routes>
-          <Route path="/" element={<Navigate to="/leaderboards/Global" />} />
-          <Route path="/leaderboards" element={<Navigate to="/leaderboards/Global" />} />
-          <Route path="/leaderboards/:leaderboardName" element={<Leaderboard />} />
-          <Route path="/player" element={<PlayerSearch />} />
-          <Route path="/player/:playerName" element={<PlayerStats />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
+        <div className="pt-16 pl-52">
+          <Routes>
+            <Route path="/" element={<Navigate to="/leaderboards/Global" />} />
+            <Route path="/leaderboards" element={<Navigate to="/leaderboards/Global" />} />
+            <Route path="/leaderboards/:leaderboardName" element={<Leaderboard />} />
+            <Route path="/player" element={<PlayerSearch />} />
+            <Route path="/player/:playerName" element={<PlayerStats />} />
+            <Route path="/about" element={<About />} />
+          </Routes>
+        </div>
     </BrowserRouter>
   );
 }

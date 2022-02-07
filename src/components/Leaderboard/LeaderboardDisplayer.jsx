@@ -42,37 +42,40 @@ const LeaderboardDisplayer = (props) => {
 
     return (
         <div className="flex flex-col items-center pr-52">
-            <div className="font-bold">{leaderboardName}</div>
-            <div className="choose-stats">
-                <Select 
-                    className="select"
-                    defaultValue={createOption(statName)} 
-                    value={createOption(statName)}
-                    options={createOptions(statNames)}
-                    isSearchable={false}
-                    onChange={handleStatNameChange}
-                    menuPortalTarget={document.body} 
-                    styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
-                />
-                <Select 
-                    className="select"
-                    defaultValue={createOption(boardName)}
-                    value={createOption(boardName)}
-                    onChange={handleBoardNameChange} 
-                    options={createOptions(boards)}
-                    isSearchable={false}
-                    menuPortalTarget={document.body} 
-                    styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
-                />
+            <div className="flex flex-col items-center bg-white p-10 py-4 m-4 border rounded" >
+                <div className="font-bold text-blue-400">{leaderboardName}</div>
+                <div className="choose-stats">
+                    <Select 
+                        className="select"
+                        defaultValue={createOption(statName)} 
+                        value={createOption(statName)}
+                        options={createOptions(statNames)}
+                        isSearchable={false}
+                        onChange={handleStatNameChange}
+                        menuPortalTarget={document.body} 
+                        styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
+                    />
+                    <Select 
+                        className="select"
+                        defaultValue={createOption(boardName)}
+                        value={createOption(boardName)}
+                        onChange={handleBoardNameChange} 
+                        options={createOptions(boards)}
+                        isSearchable={false}
+                        menuPortalTarget={document.body} 
+                        styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
+                    />
+                </div>
+                {
+                    loading ? 
+                        <Loading /> :
+                        leaderboardData.status == 404 ?
+                            <div>No results</div> :
+                            <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} />
+                }
             </div>
-            {
-                loading ? 
-                    <Loading /> :
-                    leaderboardData.status == 404 ?
-                        <div>No results</div> :
-                        <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} />
-            }
-            </div>
+
+        </div>
     )
 }
 

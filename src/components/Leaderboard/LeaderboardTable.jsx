@@ -40,7 +40,7 @@ const LeaderboardTable = (props) => {
                                 <td className="border border-solid border-gray-300 py-1 pr-16 pl-5">
                                     <PlayerAvatar uuid={entry.player.uuid}/>
                                     <Link 
-                                        className="no-underline pl-2 text-cyan-400 font-semibold hover:text-cyan-600"
+                                        className="no-underline pl-2 text-sky-700 font-medium hover:text-sky-900"
                                         to={`/player/${entry.player.name}`}>{entry.player.name}
                                     </Link>
                                 </td>
@@ -53,9 +53,9 @@ const LeaderboardTable = (props) => {
                 </tbody>
             </table>
             <div className="table-controls">
-                <i onClick={() => handlePage(-1)} className="change-page fas fa-angle-double-left fa-lg"></i>
+                <i onClick={() => handlePage(-1)} className="change-page fas fa-angle-double-left fa-lg cursor-pointer text-blue-400"></i>
                 <div className="table-page-number">{page + 1}</div>
-                <i onClick={() => handlePage(1)} className="change-page fas fa-angle-double-right fa-lg"></i>
+                <i onClick={() => handlePage(1)} className="change-page fas fa-angle-double-right fa-lg cursor-pointer text-blue-400"></i>
             </div>
         </div>
 

@@ -10,7 +10,7 @@ const PlayerSearch = (props) => {
     const navigate = useNavigate()
 
     return (
-        <div className="pt-16 pl-52">
+        <div className="p-2">
             <button className="search-button" onClick={() => navigate(`/player/${query}`)}>
                 <i className="fas fa-search fa-lg"></i>
             </button>

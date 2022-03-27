@@ -2,7 +2,7 @@ import { globalKey, gamesPlayedKey, ExpEarnedKey } from "../../util"
 import { useState, useEffect } from "react"
 
 import Loading from "../Main/Loading"
-import { fetchPlayerInfo, fetchPlayerWebsite, fetchRender } from "../../ApiUtils"
+import { fetchPlayerInfo, fetchPlayerWebsite, fetchRender } from "../../lib/api/ApiUtils"
 
 import blank from "../../sources/default.png"
 
@@ -43,7 +43,7 @@ const PlayerOverview = ({ playerName }) => {
                     :
                     <>
                         <div className="font-semibold">
-                            <div className="text-orange-500" className={`
+                            <div className={`
                                 inline-block
                                 
                                 ${websiteData.primaryRank == "Ultra" ? "text-blue-500" : ""}

@@ -8,7 +8,7 @@ import {
     createOptions, 
     parseOption,
 } from "../../util";
-import { fetchPlayerData } from "../../ApiUtils";
+import { fetchPlayerData } from "../../lib/api/ApiUtils";
 import Loading from "../Main/Loading";
 
 import PlayerTable from "./PlayerTable";

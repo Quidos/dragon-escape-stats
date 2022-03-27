@@ -41,7 +41,7 @@ const LeaderboardTable = (props) => {
                                     <PlayerAvatar uuid={entry.player.uuid}/>
                                     <Link 
                                         className="no-underline pl-2 text-sky-700 font-medium hover:text-sky-900"
-                                        to={`/player/${entry.player.name}`}>{entry.player.name}
+                                        to={`../player/${entry.player.name}`}>{entry.player.name}
                                     </Link>
                                 </td>
                                 <td className="border border-solid border-gray-300 py-1 pr-5 pl-5">

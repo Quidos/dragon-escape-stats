@@ -22,17 +22,26 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Sidebar />
-        <div className="pt-16 pl-52">
           <Routes>
-            <Route path="/" element={<Navigate to="/leaderboards/Global" />} />
-            <Route path="/leaderboards" element={<Navigate to="/leaderboards/Global" />} />
-            <Route path="/leaderboards/:leaderboardName" element={<Leaderboard />} />
-            <Route path="/player" element={<PlayerSearch />} />
-            <Route path="/player/:playerName" element={<PlayerStats />} />
-            <Route path="/about" element={<About />} />
+            <Route path="/" element={<Navigate to="/java" />} />
+            <Route path="/leaderboards" element={<Navigate to="/java" />} />
+            <Route path="/player" element={<Navigate to="/java/player" />} />
+            <Route path="java">
+              <Route path="" element={<Navigate to="leaderboards/Global" />} />
+              <Route path="leaderboards" element={<Navigate to="Global" />} />
+              <Route path="leaderboards/:leaderboardName" element={<Leaderboard />} />
+              <Route path="player" element={<PlayerSearch />} />
+              <Route path="player/:playerName" element={<PlayerStats />} />
+            </Route>
+            <Route path="bedrock">
+              <Route path="" element={<Navigate to="leaderboards/Global" />} />
+              <Route path="leaderboards" element={<Navigate to="Global" />} />
+              <Route path="leaderboards/:leaderboardName" element={<Leaderboard />} />
+              <Route path="player" element={<PlayerSearch />} />
+              <Route path="player/:playerName" element={<PlayerStats />} />
+            </Route>
+            <Route path="about" element={<About />} />
           </Routes>
-        </div>
     </BrowserRouter>
   );
 }

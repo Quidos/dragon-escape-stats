@@ -34,8 +34,8 @@ function App() {
               <Route path="player/:playerName" element={<PlayerStats />} />
             </Route>
             <Route path="bedrock">
-              <Route path="" element={<Navigate to="leaderboards/Global" />} />
-              <Route path="leaderboards" element={<Navigate to="Global" />} />
+              <Route path="" element={<Navigate to="leaderboards/SurvivalGames" />} />
+              <Route path="leaderboards" element={<Navigate to="SurvivalGames" />} />
               <Route path="leaderboards/:leaderboardName" element={<Leaderboard />} />
               <Route path="player" element={<PlayerSearch />} />
               <Route path="player/:playerName" element={<PlayerStats />} />

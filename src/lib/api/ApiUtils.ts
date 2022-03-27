@@ -42,3 +42,12 @@ export async function fetchBedrockGames() {
   const data = await res.json()
   return data
 }
+
+export async function fetchBedrockPlayerData(playerName: string) {
+  const res = await fetch(`${url}/v1/bedrock/player/${playerName}/stats/stat/Wins/All?includeEmptyEntries=false`)
+  
+  if(!res.ok) throw new Error("err")
+
+  const data = await res.json()
+  return data
+}

@@ -11,7 +11,6 @@ import "./index.css"
 import Sidebar from "./components/Sidebar/Sidebar";
 
 function App() {
-
   useEffect(() => {
     // Measure site traffic
     ReactGA.initialize(measurementID)

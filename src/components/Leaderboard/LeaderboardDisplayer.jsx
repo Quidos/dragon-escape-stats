@@ -7,10 +7,11 @@ import Select from "react-select"
 
 
 const LeaderboardDisplayer = (props) => {
+    const version = props.version
     const leaderboardName = props.leaderboardName
     const statNames =  stats[leaderboardName]
 
-    const [statName, setStatName] = useState(stats[leaderboardName][0])
+    const [statName, setStatName] = useState(version == "bedrock" ? "wins" : stats[leaderboardName][0])
     const [boardName, setBoardName] = useState(boards[4]);
     const [leaderboardData, setLeaderboardData] = useState(null)
 
@@ -18,19 +19,19 @@ const LeaderboardDisplayer = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setStatName(stats[leaderboardName][0])
+        setStatName(version == "bedrock" ? "wins" : stats[leaderboardName][0])
     }, [leaderboardName])
 
     useEffect(() => {
         setLoading(true)
-        fetch(`${url}/v1/java/leaderboard/${leaderboardName}/${statName}/${boardName}/save`)
+        fetch(`${url}/v1/${version}/leaderboard/${leaderboardName}/${statName}/${boardName}/save`)
         .then((res) => res.json())
         .then((data) => {
           setLeaderboardData(data)
           setLoading(false)
           })
         .catch(err => console.log(err))
-    }, [statName, boardName])
+    }, [statName, boardName, leaderboardName])
 
     const handleStatNameChange = (opt) => {
         setStatName(opt.value)
@@ -41,10 +42,10 @@ const LeaderboardDisplayer = (props) => {
     }
 
     return (
-        <div className="flex flex-col items-center pr-52">
+        <div className="flex flex-col items-center">
             <div className="flex flex-col items-center bg-white p-10 py-4 m-4 border rounded" >
                 <div className="font-bold text-blue-400">{leaderboardName}</div>
-                <div className="choose-stats">
+                {version == "java" && <div className="choose-stats">
                     <Select 
                         className="select"
                         defaultValue={createOption(statName)} 
@@ -65,13 +66,13 @@ const LeaderboardDisplayer = (props) => {
                         menuPortalTarget={document.body} 
                         styles={{ menuPortal: base => ({ ...base, zIndex: 0 }) }}
                     />
-                </div>
+                </div>}
                 {
                     loading ? 
                         <Loading /> :
                         leaderboardData.status == 404 ?
                             <div>No results</div> :
-                            <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} />
+                            <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} version={version} />
                 }
             </div>
 

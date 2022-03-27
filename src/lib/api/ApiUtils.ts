@@ -34,3 +34,11 @@ export async function fetchRender(uuid: string) {
   const data = await res.blob()
   return URL.createObjectURL(data)
 }
+
+export async function fetchBedrockGames() {
+  const res = await fetch(`${url}/v1/bedrock/game`)
+  if(!res.ok) throw new Error("err")
+
+  const data = await res.json()
+  return data
+}

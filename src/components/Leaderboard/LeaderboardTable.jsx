@@ -6,8 +6,8 @@ import numeral from "numeral"
 
 
 const LeaderboardTable = (props) => {
-
     const [page, setPage] = useState(0)
+    const version = props.version
     const entries = props.entries
     const perPage = props.perPage
 
@@ -24,7 +24,9 @@ const LeaderboardTable = (props) => {
                     <tr>
                         <th className="border border-solid border-gray-200">Rank</th>
                         <th className="border border-solid border-gray-200">Name</th>
-                        <th className="border border-solid border-gray-200">Score</th>
+                        <th className="border border-solid border-gray-200">
+                            {version == "java" ? "Score" : "Wins"}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -38,7 +40,7 @@ const LeaderboardTable = (props) => {
                                     {i + 1 + page * perPage}
                                 </td>
                                 <td className="border border-solid border-gray-300 py-1 pr-16 pl-5">
-                                    <PlayerAvatar uuid={entry.player.uuid}/>
+                                    {version == "java" && <PlayerAvatar uuid={entry.player.uuid}/>}
                                     <Link 
                                         className="no-underline pl-2 text-sky-700 font-medium hover:text-sky-900"
                                         to={`../player/${entry.player.name}`}>{entry.player.name}

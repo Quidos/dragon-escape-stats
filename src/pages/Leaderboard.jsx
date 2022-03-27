@@ -4,12 +4,33 @@ import Select from "react-select"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import LeaderboardDisplayer from "../components/Leaderboard/LeaderboardDisplayer"
 import Sidebar from "../components/Main/Sidebar"
+import { useEffect, useState } from "react"
+import { fetchBedrockGames } from "../lib/api/ApiUtils"
 
 
 const Leaderboard = (props) => {
-    console.log(useLocation());
+    const version = useLocation().pathname.split("/")[1];
     const {leaderboardName} = useParams()
     const navigate = useNavigate()
+    const [bedrockGames, setBedrockGames] = useState([
+        {
+            categoryName: "All Games",
+            games: []
+        }
+    ])
+    const categoryData = version == "java" ? categories : bedrockGames
+
+    useEffect(() => {
+        (async () => {
+            const data = await fetchBedrockGames();
+            setBedrockGames([
+                {
+                    categoryName: "All Games",
+                    games: data.map((el) => el.gameName)
+                }
+            ])
+        })()
+    }, [])
 
     const handleLeaderboardChange = (opt) => {
         navigate(`../leaderboards/${opt.value}`)
@@ -19,9 +40,9 @@ const Leaderboard = (props) => {
         <>
             <Sidebar />
             <div className="pt-16 pl-52">
-                <div className="flex flex-col items-center p-2">
+                <div className="flex flex-col items-center p-4 pr-52">
                     <div className="flex flex-wrap border bg-white p-2">
-                        {categories.map(category => {
+                        {categoryData.map(category => {
                             return (
                                 <Select 
                                     className="select"
@@ -41,7 +62,7 @@ const Leaderboard = (props) => {
                             )
                         })}
                     </div>
-                    <LeaderboardDisplayer leaderboardName={leaderboardName} />
+                    <LeaderboardDisplayer leaderboardName={leaderboardName} version={version} />
                 </div>
             </div>
         </>

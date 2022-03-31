@@ -40,17 +40,17 @@ const PlayerTable = ({ playerData }) => {
                             className="border border-solid border-gray-200 even:bg-gray-200"
                             key={Math.random()}>
                             <td
-                                className="border border-solid border-gray-300 py-1 pr-8 pl-5"
+                                className="border border-solid border-gray-300 py-1 pr-4 px-2 lg:pr-8 lg:pl-5"
                             >
                                 {cleanName}
                             </td>
                             <td
-                                className="border border-solid border-gray-300 py-1 pr-16 pl-5"
+                                className="border border-solid border-gray-300 py-1 px-2 lg:pr-16 lg:pl-5"
                             >
                                 {score !== -1 ? numeral(score).format('0,0') : "?"}
                             </td>
                             <td
-                                className="border border-solid border-gray-300 py-1 pr-16 pl-5"
+                                className="border border-solid border-gray-300 py-1 px-2 lg:pr-16 lg:pl-5"
                             >
                                 {position !== -1 ? numeral(position).format('0,0') : "?"}
                             </td>

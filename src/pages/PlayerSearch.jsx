@@ -13,7 +13,7 @@ const PlayerSearch = (props) => {
     return (
         <>
             <Sidebar />
-            <div className="pt-16 pl-52">
+            <div className="pt-24 lg:pt-16 lg:pl-52">
                 <div className="m-6 p-2 bg-white border">
                     <div className="p-4 flex">
                         <button className="w-12 bg-sky-700 rounded-l-md hover:bg-sky-900" onClick={() => navigate(`/player/${query}`)}>

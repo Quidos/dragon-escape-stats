@@ -6,7 +6,32 @@ import LeaderboardDisplayer from "../components/Leaderboard/LeaderboardDisplayer
 import Sidebar from "../components/Main/Sidebar"
 import { useEffect, useState } from "react"
 import { fetchBedrockGames } from "../lib/api/ApiUtils"
+import clsx from "clsx"
 
+const parseStats = (stats) => {
+    return stats
+        .map((obj) => {
+            if(obj.board.boardName !== "All") return
+            return {
+                prioriry: obj.stat.sortingPriority,
+                statName: obj.stat.statName
+            }
+        })
+        .filter((obj) => obj !== undefined)
+        .sort((obj1, obj2) => obj2.prioriry - obj1.prioriry)
+        .map((obj) => {
+            return obj.statName
+        })
+}
+
+// useEffect(() => {
+//     (async () => {
+//         const statsArr = await fetchStats(leaderboardName)
+//         const stats = parseStats(statsArr)
+//         setStatNames(stats)
+//         setStatName(version == "bedrock" ? "wins" : stats[0])
+//     })()
+// }, [leaderboardName])
 
 const Leaderboard = (props) => {
     const version = useLocation().pathname.split("/")[1];
@@ -39,9 +64,9 @@ const Leaderboard = (props) => {
     return (
         <>
             <Sidebar />
-            <div className="pt-16 pl-52">
-                <div className="flex flex-col items-center p-4 pr-52">
-                    <div className="flex flex-wrap border bg-white p-2">
+            <div className="pt-24 lg:pt-16 lg:pl-52">
+                <div className="flex flex-col items-center p-4">
+                    <div className={clsx("flex flex-wrap justify-center border bg-white lg:justify-start lg:p-2", version == "bedrock" && "lg:mr-52")}>
                         {categoryData.map(category => {
                             return (
                                 <Select 
@@ -56,13 +81,15 @@ const Leaderboard = (props) => {
                                         menuPortal: base => ({ ...base, zIndex: 1 }),
                                         container: provided => ({
                                             ...provided,
-                                            width: "190px"
+                                            width: "160px"
                                         }) }}
                             />
                             )
                         })}
                     </div>
-                    <LeaderboardDisplayer leaderboardName={leaderboardName} version={version} />
+                    <div className="lg:pr-52">
+                        <LeaderboardDisplayer leaderboardName={leaderboardName} version={version} />
+                    </div>
                 </div>
             </div>
         </>

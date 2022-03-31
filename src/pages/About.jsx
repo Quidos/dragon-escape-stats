@@ -4,7 +4,7 @@ const About = () => {
     return (
         <>
             <Sidebar />
-            <div className="pt-16 pl-52">
+            <div className="pt-2 lg:pt-16 lg:pl-52">
                 <div className="m-2 p-6 border bg-white">
                     <p>Play on Mineplex <a className="text-sky-700 hover:text-sky-900" href="https://www.mineplex.com/" target="_blank" rel="noopener noreferrer">here</a></p>
                     <p>Check out the project <a className="text-sky-700 hover:text-sky-900" href="https://github.com/Quidos/dragon-escape-stats" target="_blank" rel="noopener noreferrer">here</a></p>

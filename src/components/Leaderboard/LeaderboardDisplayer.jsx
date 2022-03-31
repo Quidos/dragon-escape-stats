@@ -4,14 +4,31 @@ import { url, boards, statNamesArr, categories, createOption, createOptions, sta
 import LeaderboardTable from "./LeaderboardTable"
 import Loading from "../Main/Loading"
 import Select from "react-select"
+import { fetchStats } from "../../lib/api/ApiUtils"
+
+const parseStats = (stats) => {
+    return stats
+        .map((obj) => {
+            if(obj.board.boardName !== "All") return
+            return {
+                prioriry: obj.stat.sortingPriority,
+                statName: obj.stat.statName
+            }
+        })
+        .filter((obj) => obj !== undefined)
+        .sort((obj1, obj2) => obj2.prioriry - obj1.prioriry)
+        .map((obj) => {
+            return obj.statName
+        })
+}
 
 
 const LeaderboardDisplayer = (props) => {
     const version = props.version
     const leaderboardName = props.leaderboardName
-    const statNames =  stats[leaderboardName]
+    const [statNames, setStatNames] =  useState(null)
 
-    const [statName, setStatName] = useState(version == "bedrock" ? "wins" : stats[leaderboardName][0])
+    const [statName, setStatName] = useState(null)
     const [boardName, setBoardName] = useState(boards[4]);
     const [leaderboardData, setLeaderboardData] = useState(null)
 
@@ -19,10 +36,20 @@ const LeaderboardDisplayer = (props) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setStatName(version == "bedrock" ? "wins" : stats[leaderboardName][0])
+        (async () => {
+            let stats1 = []
+            if(version == "java"){
+                const statsArr = await fetchStats(leaderboardName)
+                stats1 = parseStats(statsArr)
+                setStatNames(stats1)
+            }
+            setStatName(version == "bedrock" ? "wins" : stats1[0])
+        })()
     }, [leaderboardName])
 
     useEffect(() => {
+        if(!statName) return
+        if(version == "java" && !stats[leaderboardName].includes(statName)) return
         setLoading(true)
         fetch(`${url}/v1/${version}/leaderboard/${leaderboardName}/${statName}/${boardName}/save`)
         .then((res) => res.json())
@@ -40,12 +67,13 @@ const LeaderboardDisplayer = (props) => {
     const handleBoardNameChange = (opt) => {
         setBoardName(opt.value)
     }
+    if((version == "java" && !statNames) || !statName) return <Loading />
 
     return (
-        <div className="flex flex-col items-center">
-            <div className="flex flex-col items-center bg-white p-10 py-4 m-4 border rounded" >
+        <div className="flex flex-col items-center w-full">
+            <div className="flex flex-col items-center bg-white lg:p-10 lg:py-4 m-4 border rounded" >
                 <div className="font-bold text-blue-400">{leaderboardName}</div>
-                {version == "java" && <div className="choose-stats">
+                {version == "java" && <div className="lg:flex">
                     <Select 
                         className="select"
                         defaultValue={createOption(statName)} 

@@ -31,8 +31,8 @@ const PlayerOverview = ({ playerName }) => {
     }, [])
 
     return (
-        <div className="flex flex-col min-w-[15rem] items-center border-2 m-1 h-min bg-white">
-            <img className="w-24 m-4" src={imageUrl} alt="" />
+        <div className="flex flex-col lg:min-w-[15rem] items-center border-2 m-1 h-min bg-white">
+            <img className="lg:w-24 lg:m-4" src={imageUrl} alt="" />
             <div className="flex flex-col items-center">
             {
                 websiteData == null ?

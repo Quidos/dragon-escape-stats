@@ -51,3 +51,12 @@ export async function fetchBedrockPlayerData(playerName: string) {
   const data = await res.json()
   return data
 }
+
+export async function fetchStats(gameName: string) {
+  const res = await fetch(`${url}/v1/java/leaderboard/${gameName}`)
+  
+  if(!res.ok) throw new Error("err")
+
+  const data = await res.json()
+  return data
+}

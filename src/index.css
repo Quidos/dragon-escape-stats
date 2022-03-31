@@ -72,9 +72,6 @@ Leaderboard
     flex-wrap: wrap;
 }
 
-.choose-stats {
-    display: flex;
-}
 
 .select {
     box-sizing: border-box;
@@ -147,7 +144,6 @@ LeaderboardTable
 
 
 .leaderboard-table-main {
-    border-collapse: collapse;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     border-radius: 5px 5px 0 0;
 }

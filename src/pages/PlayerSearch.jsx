@@ -4,6 +4,7 @@ import Select from "react-select"
 import Loading from "../components/Main/Loading"
 import { url, boards, createOption, createOptions } from "../util"
 import Sidebar from "../components/Main/Sidebar"
+import { Helmet } from "react-helmet"
 
 
 const PlayerSearch = (props) => {
@@ -12,6 +13,9 @@ const PlayerSearch = (props) => {
 
     return (
         <>
+        <Helmet>
+            <title>Player Stats | Mineplex Stats</title>
+        </Helmet>
             <Sidebar />
             <div className="pt-24 lg:pt-16 lg:pl-52">
                 <div className="m-6 p-2 bg-white border">

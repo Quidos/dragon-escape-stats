@@ -10,6 +10,7 @@ import ReactGA from "react-ga4"
 import "./index.css"
 import Sidebar from "./components/Main/Sidebar";
 import PlayerSearch from "./pages/PlayerSearch";
+import { Helmet } from "react-helmet"
 
 function usePageViews() {
   let location = useLocation()
@@ -29,6 +30,9 @@ function App() {
 
   return (
     <>
+      <Helmet>
+        <title>MPstats | Mineplex Stats</title>
+      </Helmet>
       <Header />
           <Routes>
             <Route path="/" element={<Navigate to="/java" />} />

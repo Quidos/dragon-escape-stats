@@ -1,8 +1,12 @@
 import Sidebar from "../components/Main/Sidebar"
+import { Helmet } from "react-helmet"
 
 const About = () => {
     return (
         <>
+            <Helmet>
+                <title>About | Mineplex Stats</title>
+            </Helmet>
             <Sidebar />
             <div className="pt-2 lg:pt-16 lg:pl-52">
                 <div className="m-2 p-6 border bg-white">

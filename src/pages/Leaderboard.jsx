@@ -7,6 +7,7 @@ import Sidebar from "../components/Main/Sidebar"
 import { useEffect, useState } from "react"
 import { fetchBedrockGames } from "../lib/api/ApiUtils"
 import clsx from "clsx"
+import { Helmet } from "react-helmet"
 
 const parseStats = (stats) => {
     return stats
@@ -63,6 +64,13 @@ const Leaderboard = (props) => {
 
     return (
         <>
+            <Helmet>
+                <title>{leaderboardName} - {version == "java" ? "Java" : "Bedrock"} | Mineplex Stats</title>
+                <meta
+                    name="keywords"
+                    content={`${leaderboardName.replace(/([a-z])([A-Z])/g, '$1 $2')}, ${leaderboardName}, ${version}, Mineplex Stats`}
+                />
+            </Helmet>
             <Sidebar />
             <div className="pt-24 lg:pt-16 lg:pl-52">
                 <div className="flex flex-col items-center p-4">

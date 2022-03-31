@@ -1,5 +1,5 @@
-# Dragon escape stats
+# MPstats
 
-Web app for Dragon escape stats
+Web app for Mineplex stats
 
-https://destats.net
+https://mpstats.net

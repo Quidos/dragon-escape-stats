@@ -1,4 +1,5 @@
 import numeral from "numeral"
+import { getCleanLeaderboardName } from "../../util"
 
 const PlayerTable = ({ playerData }) => {
 
@@ -42,7 +43,7 @@ const PlayerTable = ({ playerData }) => {
                             <td
                                 className="border border-solid border-gray-300 py-1 pr-4 px-2 lg:pr-8 lg:pl-5"
                             >
-                                {cleanName}
+                                {getCleanLeaderboardName(cleanName)}
                             </td>
                             <td
                                 className="border border-solid border-gray-300 py-1 px-2 lg:pr-16 lg:pl-5"

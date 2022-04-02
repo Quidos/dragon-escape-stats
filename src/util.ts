@@ -11,6 +11,14 @@ export function createOption(inp: string) : Option {
   return temp
 }
 
+export function createCleanOption(inp: string) : Option {
+  const temp: Option = {
+    label: inp.replace(/([a-z])([A-Z])/g, '$1 $2'),
+    value: inp
+  }
+  return temp
+}
+
 export function createOptions(arr: string[]) : Option[] {
   return arr.map(name => {
     const temp: Option = {
@@ -32,6 +40,7 @@ export function createOptionsLeaderboardNames(arr: string[]) : Option[] {
 }
 
 export function getCleanLeaderboardName(leaderboardName: string) : string {
+  if(!leaderboardName) return ""
   if(cleanLeaderboardNames[leaderboardName]) return cleanLeaderboardNames[leaderboardName]
   return leaderboardName.replace(/([a-z])([A-Z])/g, '$1 $2')
 }

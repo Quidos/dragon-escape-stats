@@ -1,5 +1,6 @@
 import { useState, useEffect, useReducer } from "react"
 import { fetchBedrockPlayerData } from "../../lib/api/ApiUtils";
+import { getCleanLeaderboardName } from "../../util";
 import Loading from "../Main/Loading";
 
 import PlayerTable from "./PlayerTable";
@@ -34,7 +35,7 @@ const BedrockPlayer = ({ playerName }) => {
                                 key={gameName}
                             >
                                 <td className="border border-solid border-gray-300 py-1 pr-5 lg:pr-16 pl-5">
-                                    {gameName}
+                                    {getCleanLeaderboardName(gameName)}
                                 </td>
                                 <td className="border border-solid border-gray-300 py-1 pr-5 pl-5">
                                     {data.score}

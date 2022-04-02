@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { url, boards, statNamesArr, categories, createOption, createOptions, stats, getCleanLeaderboardName} from "../../util"
+import { url, boards, statNamesArr, categories, createOption, createOptions, stats, getCleanLeaderboardName, createOptionsLeaderboardNames, createCleanOption} from "../../util"
 
 import LeaderboardTable from "./LeaderboardTable"
 import Loading from "../Main/Loading"
@@ -43,7 +43,8 @@ const LeaderboardDisplayer = (props) => {
                 stats1 = parseStats(statsArr)
                 setStatNames(stats1)
             }
-            setStatName(version == "bedrock" ? "wins" : stats1[0])
+            if(leaderboardName === "Global") setStatName(version == "bedrock" ? "wins" : stats1[3])
+            else setStatName(version == "bedrock" ? "wins" : stats1[0])
         })()
     }, [leaderboardName])
 
@@ -77,8 +78,8 @@ const LeaderboardDisplayer = (props) => {
                     <Select 
                         className="select"
                         defaultValue={createOption(statName)} 
-                        value={createOption(statName)}
-                        options={createOptions(statNames)}
+                        value={createCleanOption(statName)}
+                        options={createOptionsLeaderboardNames(statNames)}
                         isSearchable={false}
                         onChange={handleStatNameChange}
                         menuPortalTarget={document.body} 

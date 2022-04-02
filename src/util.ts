@@ -21,6 +21,21 @@ export function createOptions(arr: string[]) : Option[] {
   })
 }
 
+export function createOptionsLeaderboardNames(arr: string[]) : Option[] {
+  return arr.map(name => {
+    const temp: Option = {
+      label: getCleanLeaderboardName(name),
+      value: name
+    }
+    return temp;
+  })
+}
+
+export function getCleanLeaderboardName(leaderboardName: string) : string {
+  if(cleanLeaderboardNames[leaderboardName]) return cleanLeaderboardNames[leaderboardName]
+  return leaderboardName.replace(/([a-z])([A-Z])/g, '$1 $2')
+}
+
 export function parseOption(inp: Option) : string {
   return inp.value
 }
@@ -1088,4 +1103,21 @@ export const stats: dict = {
     'Wins'
   ],
   MonsterLeague: [ 'Losses', 'GemsEarned', 'Deaths', 'ExpEarned', 'Wins' ]
+}
+
+export const cleanLeaderboardNames: {[key: string]: string} = {
+  TugofWool: "Tug Of Wool",
+  MilktheCow: "Milk The Cow",
+  OneintheQuiver: "One In The Quiver",
+  ChampionsCTF: "Champions CTF",
+  UHCRemastered: "UHC Remastered",
+  HeroesofGWEN: "Heroes Of GWEN",
+  ChampionsTDM: "Champions TDM",
+  CastleAssaultTDM: "Castle Assault TDM",
+  MCLeague: "MC League",
+  OneintheQuiverPayload: "One In The Quiver Payload",
+  HeroesofGWENTraining: "Heroes Of GWEN Training",
+  ABarbariansLife: "A Barbarians Life",
+  Area51Raid: "Area 51 Raid",
+  CastleDefense2020: "Castle Defense 2020",
 }

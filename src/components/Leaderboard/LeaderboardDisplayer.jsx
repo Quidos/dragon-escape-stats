@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { url, boards, statNamesArr, categories, createOption, createOptions, stats} from "../../util"
+import { url, boards, statNamesArr, categories, createOption, createOptions, stats, getCleanLeaderboardName} from "../../util"
 
 import LeaderboardTable from "./LeaderboardTable"
 import Loading from "../Main/Loading"
@@ -72,7 +72,7 @@ const LeaderboardDisplayer = (props) => {
     return (
         <div className="flex flex-col items-center w-full">
             <div className="flex flex-col items-center bg-white lg:p-10 lg:py-4 m-4 border rounded" >
-                <div className="font-bold text-blue-400">{leaderboardName}</div>
+                <div className="font-bold text-blue-400">{getCleanLeaderboardName(leaderboardName)}</div>
                 {version == "java" && <div className="lg:flex">
                     <Select 
                         className="select"

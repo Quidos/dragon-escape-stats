@@ -1,4 +1,4 @@
-import {categories, createOption, createOptions, stats} from "../util"
+import {categories, createOption, createOptions, createOptionsLeaderboardNames, getCleanLeaderboardName, stats} from "../util"
 import Select from "react-select"
 
 import { useLocation, useNavigate, useParams } from "react-router-dom"
@@ -8,31 +8,6 @@ import { useEffect, useState } from "react"
 import { fetchBedrockGames } from "../lib/api/ApiUtils"
 import clsx from "clsx"
 import { Helmet } from "react-helmet"
-
-const parseStats = (stats) => {
-    return stats
-        .map((obj) => {
-            if(obj.board.boardName !== "All") return
-            return {
-                prioriry: obj.stat.sortingPriority,
-                statName: obj.stat.statName
-            }
-        })
-        .filter((obj) => obj !== undefined)
-        .sort((obj1, obj2) => obj2.prioriry - obj1.prioriry)
-        .map((obj) => {
-            return obj.statName
-        })
-}
-
-// useEffect(() => {
-//     (async () => {
-//         const statsArr = await fetchStats(leaderboardName)
-//         const stats = parseStats(statsArr)
-//         setStatNames(stats)
-//         setStatName(version == "bedrock" ? "wins" : stats[0])
-//     })()
-// }, [leaderboardName])
 
 const Leaderboard = (props) => {
     const version = useLocation().pathname.split("/")[1];
@@ -65,7 +40,7 @@ const Leaderboard = (props) => {
     return (
         <>
             <Helmet>
-                <title>{leaderboardName} - {version == "java" ? "Java" : "Bedrock"} | Mineplex Stats</title>
+                <title>{getCleanLeaderboardName(leaderboardName)} - {version == "java" ? "Java" : "Bedrock"} | Mineplex Stats</title>
                 <meta
                     name="keywords"
                     content={`${leaderboardName.replace(/([a-z])([A-Z])/g, '$1 $2')}, ${leaderboardName}, ${version}, Mineplex Stats`}
@@ -82,7 +57,7 @@ const Leaderboard = (props) => {
                                     key={category.categoryName}
                                     defaultValue={createOption(category.categoryName)}
                                     value={createOption(category.categoryName)}
-                                    options={ createOptions(category.games)}
+                                    options={ createOptionsLeaderboardNames(category.games)}
                                     onChange={handleLeaderboardChange}
                                     menuPortalTarget={document.body} 
                                     styles={{ 

@@ -1,6 +1,24 @@
 import numeral from "numeral"
 import { getCleanLeaderboardName } from "../../util"
 
+const secondsToString = (interval) => {
+    const levels = {
+        scale: [24, 60, 60, 1],
+        units: [' d ', 'h ', 'm ', 's ']
+      };
+    const cbFun = (d, c) => {
+        let bb = d[1] % c[0],
+        aa = (d[1] - bb) / c[0];
+        aa = aa > 0 ? aa + c[1] : '';
+        return [d[0] + aa, bb];
+    };
+  
+    let rslt = levels.scale.map((d, i, a) => a.slice(i).reduce((d, c) => d * c))
+      .map((d, i) => ([d, levels.units[i]]))
+      .reduce(cbFun, ['', interval]);
+    return rslt[0].split(" ")[0];
+  };
+
 const PlayerTable = ({ playerData }) => {
 
     return (
@@ -33,9 +51,12 @@ const PlayerTable = ({ playerData }) => {
                 .sort((a, b) => b.leaderboard.stat.sortingPriority - a.leaderboard.stat.sortingPriority)
                 .map((obj) => {
                     const cleanName = obj.leaderboard.stat.cleanName
-                    const score = obj.score
+                    let score = obj.score
                     const position = obj.position
                     if(score == -1 && position == -1) return
+                    console.log(cleanName);
+                    if(["Ingame Time", "Hub Time"].includes(cleanName)) score = `${secondsToString(score)}`
+                    else score = numeral(score).format('0,0')
                     return (
                         <tr 
                             className="border border-solid border-gray-200 even:bg-gray-200"
@@ -48,7 +69,7 @@ const PlayerTable = ({ playerData }) => {
                             <td
                                 className="border border-solid border-gray-300 py-1 px-2 lg:pr-16 lg:pl-5"
                             >
-                                {score !== -1 ? numeral(score).format('0,0') : "?"}
+                                {score !== -1 ? score : "?"}
                             </td>
                             <td
                                 className="border border-solid border-gray-300 py-1 px-2 lg:pr-16 lg:pl-5"

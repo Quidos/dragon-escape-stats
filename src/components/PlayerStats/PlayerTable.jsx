@@ -54,7 +54,6 @@ const PlayerTable = ({ playerData }) => {
                     let score = obj.score
                     const position = obj.position
                     if(score == -1 && position == -1) return
-                    console.log(cleanName);
                     if(["Ingame Time", "Hub Time"].includes(cleanName)) score = `${secondsToString(score)}`
                     else score = numeral(score).format('0,0')
                     return (

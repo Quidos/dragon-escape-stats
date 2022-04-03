@@ -4,12 +4,30 @@ import PlayerAvatar from "./PlayerAvatar"
 
 import numeral from "numeral"
 
+const secondsToString = (interval) => {
+    const levels = {
+        scale: [24, 60, 60, 1],
+        units: [' d ', 'h ', 'm ', 's ']
+      };
+    const cbFun = (d, c) => {
+        let bb = d[1] % c[0],
+        aa = (d[1] - bb) / c[0];
+        aa = aa > 0 ? aa + c[1] : '';
+        return [d[0] + aa, bb];
+    };
+  
+    let rslt = levels.scale.map((d, i, a) => a.slice(i).reduce((d, c) => d * c))
+      .map((d, i) => ([d, levels.units[i]]))
+      .reduce(cbFun, ['', interval]);
+    return rslt[0].split(" ")[0];
+  };
 
 const LeaderboardTable = (props) => {
     const [page, setPage] = useState(0)
     const version = props.version
     const entries = props.entries
     const perPage = props.perPage
+    const statName = props.statName
 
     const handlePage = (change) => {
         if(page + change < 0) return
@@ -31,6 +49,9 @@ const LeaderboardTable = (props) => {
                 </thead>
                 <tbody>
                     {entries.slice(page * perPage, page * perPage + perPage).map((entry, i) => {
+                        let score = entry.score
+                        if(["IngameTime", "HubTime"].includes(statName)) score = `${secondsToString(score)}`
+                        else score = numeral(score).format('0,0')
                         return(
                             <tr 
                                 className="border border-solid border-gray-200 even:bg-gray-200"
@@ -47,7 +68,7 @@ const LeaderboardTable = (props) => {
                                     </Link>
                                 </td>
                                 <td className="border border-solid border-gray-300 py-1 pr-5 pl-5">
-                                    {numeral(entry.score).format('0,0')}
+                                    {score}
                                 </td>
                             </tr>
                         )

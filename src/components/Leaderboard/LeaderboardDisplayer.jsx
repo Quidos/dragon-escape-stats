@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import { url, boards, statNamesArr, categories, createOption, createOptions, stats, getCleanLeaderboardName, createOptionsLeaderboardNames, createCleanOption} from "../../util"
+import {url, boards, statNamesArr, categories, createOption, createOptions, stats, getCleanLeaderboardName, createOptionsLeaderboardNames, createCleanOption} from "../../util"
 
 import LeaderboardTable from "./LeaderboardTable"
 import Loading from "../Main/Loading"
@@ -43,8 +43,7 @@ const LeaderboardDisplayer = (props) => {
                 stats1 = parseStats(statsArr)
                 setStatNames(stats1)
             }
-            if(leaderboardName === "Global") setStatName(version == "bedrock" ? "wins" : stats1[3])
-            else setStatName(version == "bedrock" ? "wins" : stats1[0])
+            setStatName(version == "bedrock" ? "wins" : stats1[0])
         })()
     }, [leaderboardName])
 
@@ -52,7 +51,9 @@ const LeaderboardDisplayer = (props) => {
         if(!statName) return
         if(version == "java" && !stats[leaderboardName].includes(statName)) return
         setLoading(true)
-        fetch(`${url}/v1/${version}/leaderboard/${leaderboardName}/${statName}/${boardName}/save`)
+        let addr = `${url}/v1/${version}/leaderboard/${leaderboardName}/${statName}/${boardName}/save`
+        if(leaderboardName === "Global" || leaderboardName === "Track") addr = `${url}/v1/${version}/leaderboard/${leaderboardName}/${statName}/${boardName}/save?filterReasons=GLITCHED&filterReasons=GIVEN&filterReasons=BOOSTED`
+        fetch(addr)
         .then((res) => res.json())
         .then((data) => {
           setLeaderboardData(data)
@@ -101,7 +102,7 @@ const LeaderboardDisplayer = (props) => {
                         <Loading /> :
                         leaderboardData.status == 404 ?
                             <div>No results</div> :
-                            <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} version={version} />
+                            <LeaderboardTable entries={leaderboardData.entries} perPage={perPage} version={version} statName={statName} />
                 }
             </div>
 
